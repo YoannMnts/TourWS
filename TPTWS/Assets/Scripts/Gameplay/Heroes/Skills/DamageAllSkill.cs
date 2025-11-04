@@ -1,9 +1,6 @@
 using TPT.Core.Data.Skills;
-using TPT.Gameplay.Heroes;
-using TPT.Gameplay.Heroes.Skills;
-using UnityEngine;
 
-namespace TPT.Gameplay
+namespace TPT.Gameplay.Heroes.Skills
 {
     [CreateSkillFor(typeof(DamageAllSkillData))]
     public class DamageAllSkill : Skill<DamageAllSkillData>

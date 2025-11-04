@@ -1,8 +1,7 @@
 ﻿using System;
 using TPT.Gameplay.Heroes;
-using UnityEngine;
 
-namespace TPT.Gameplay.UI.Heroes
+namespace TPT.Gameplay.UI.Heroes.Panels
 {
     public abstract class HeroTurnPhase
     {

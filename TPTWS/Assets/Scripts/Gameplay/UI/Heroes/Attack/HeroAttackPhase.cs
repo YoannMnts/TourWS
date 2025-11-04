@@ -3,6 +3,7 @@ using TPT.Core.Data.Skills;
 using TPT.Gameplay.Heroes;
 using TPT.Gameplay.Level;
 using TPT.Gameplay.Selection;
+using TPT.Gameplay.UI.Heroes.Panels;
 
 namespace TPT.Gameplay.UI.Heroes.Attack
 {
