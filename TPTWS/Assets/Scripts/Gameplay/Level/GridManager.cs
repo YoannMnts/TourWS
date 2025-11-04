@@ -8,45 +8,63 @@ namespace TPT.Gameplay
     public class GridManager : MonoBehaviour
     {
         private Grid grid;
+        [Header("Grid Settings")]
         [SerializeField]
         private Vector2 gridSize;
+        [SerializeField] 
+        private Vector2Int gridStartPos;
+        [SerializeField]
+        private GameObject gridPrefab;
+        
+        [Header("Other Settings")]
         [SerializeField]
         private PlayerController player;
 
         private void Awake()
         {
-            
+            grid = GetComponent<Grid>();
         }
 
         void OnDrawGizmos()
         {
             grid = GetComponent<Grid>();
-            Debug.Log(grid.cellSize);
-            for (int i = 0; i < gridSize.x; i++)
+            for (int k = 0; k < player.spawnPoints.Length; k++)
             {
-                for (int j = 0; j < gridSize.y; j++)
+                Vector3 position = player.spawnPoints[k].position;
+                var coordinates = GetCellPosition(position);
+                var bounds = GetBounds(coordinates);
+                player.spawnPoints[k].position = bounds.center;
+                
+                for (int i = 0; i < gridSize.x; i++)
                 {
-                    Vector3 pos = new Vector3(i, 0, j);
-                    Gizmos.color = Color.white;
-                    for (int k = 0; k < player.spawnPoints.Length; k++)
+                    for (int j = 0; j < gridSize.y; j++)
                     {
-                        Gizmos.color = Color.cyan;
-                        Vector3 position = player.spawnPoints[k].position;
-                        var coordinates = grid.WorldToCell(position);
-                        var bounds = grid.GetBoundsLocal(coordinates);
-                        var center = grid.GetCellCenterWorld(coordinates);
+                        Vector3 pos = new Vector3(i + gridStartPos.x, 0, j + gridStartPos.y);
+                        //Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
                         
-                        Gizmos.DrawWireCube(center, bounds.size);
-
-                        /*
-                        Vector3Int targetGridPosition = Vector3Int.RoundToInt(position);
-                        Debug.Log($"target grid pos ==> {targetGridPosition}");
-                        Gizmos.DrawWireCube(grid.GetCellCenterLocal(targetGridPosition), grid.cellSize);
-                        */
+                        Gizmos.color = Color.white;
+                        Gizmos.DrawWireCube(pos + bounds.extents, bounds.size);
+                        
                     }
-                    
                 }
+                
+                Gizmos.color = new Color(0.44f, 1f, 0.19f);
+                Gizmos.DrawCube(bounds.center, bounds.size);
+                
             }
+        }
+
+        private Bounds GetBounds(Vector3Int coordinates)
+        {
+            var bounds = grid.GetBoundsLocal(coordinates);
+            bounds.center = grid.GetCellCenterWorld(coordinates);
+            return bounds;
+        }
+
+        private Vector3Int GetCellPosition(Vector3 position)
+        {
+            var coordinates = grid.WorldToCell(position);
+            return coordinates;
         }
     }
 }
