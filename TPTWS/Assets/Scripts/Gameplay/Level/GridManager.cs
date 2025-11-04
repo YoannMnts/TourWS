@@ -20,33 +20,34 @@ namespace TPT.Gameplay
         [SerializeField]
         private PlayerController player;
 
+        private Bounds bounds;
+        private Vector3Int coordinates;
+
         private void Awake()
         {
             grid = GetComponent<Grid>();
         }
 
+        private void OnEnable()
+        {
+            InitializeHeroPosition();
+            GenerateGrid();
+        }
+
         void OnDrawGizmos()
         {
             grid = GetComponent<Grid>();
-            for (int k = 0; k < player.spawnPoints.Length; k++)
+            InitializeHeroPosition();
+            GenerateGrid();
+        }
+
+        private void InitializeHeroPosition()
+        {
+            for (int i = 0; i < player.spawnPoints.Length; i++)
             {
-                Vector3 position = player.spawnPoints[k].position;
-                var coordinates = GetCellPosition(position);
-                var bounds = GetBounds(coordinates);
-                player.spawnPoints[k].position = bounds.center;
-                
-                for (int i = 0; i < gridSize.x; i++)
-                {
-                    for (int j = 0; j < gridSize.y; j++)
-                    {
-                        Vector3 pos = new Vector3(i + gridStartPos.x, 0, j + gridStartPos.y);
-                        //Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
-                        
-                        Gizmos.color = Color.white;
-                        Gizmos.DrawWireCube(pos + bounds.extents, bounds.size);
-                        
-                    }
-                }
+                var heroPosition = player.spawnPoints[i].position;
+                UpdateCoordinatesAndBounds(heroPosition);
+                SnapHeroOnCell(i);
                 
                 Gizmos.color = new Color(0.44f, 1f, 0.19f);
                 Gizmos.DrawCube(bounds.center, bounds.size);
@@ -54,17 +55,32 @@ namespace TPT.Gameplay
             }
         }
 
-        private Bounds GetBounds(Vector3Int coordinates)
+        private void GenerateGrid()
         {
-            var bounds = grid.GetBoundsLocal(coordinates);
-            bounds.center = grid.GetCellCenterWorld(coordinates);
-            return bounds;
+            for (int i = 0; i < gridSize.x; i++)
+            {
+                for (int j = 0; j < gridSize.y; j++)
+                {
+                    Vector3 pos = new Vector3(i + gridStartPos.x, 0, j + gridStartPos.y);
+                    //Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
+                        
+                    Gizmos.color = Color.white;
+                    Gizmos.DrawWireCube(pos + bounds.extents, bounds.size);
+                        
+                }
+            }
         }
 
-        private Vector3Int GetCellPosition(Vector3 position)
+        private void UpdateCoordinatesAndBounds(Vector3 position)
         {
-            var coordinates = grid.WorldToCell(position);
-            return coordinates;
+            coordinates = grid.WorldToCell(position);;
+            bounds = grid.GetBoundsLocal(coordinates);
+            bounds.center = grid.GetCellCenterWorld(coordinates);
+        }
+
+        private void SnapHeroOnCell(int index)
+        {
+            player.spawnPoints[index].position = bounds.center;
         }
     }
 }

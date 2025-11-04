@@ -617,6 +617,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1612132057}
+    - target: {fileID: 602809419373968398, guid: cc900d967032a6f42b404b33db6c2de7, type: 3}
+      propertyPath: gridPrefab
+      value: 
+      objectReference: {fileID: 2231467944295801401, guid: 9e65457b7d5282d4d961fcdce56ae746, type: 3}
     - target: {fileID: 6240958995728530889, guid: cc900d967032a6f42b404b33db6c2de7, type: 3}
       propertyPath: m_Name
       value: GridManager
