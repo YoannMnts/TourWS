@@ -536,6 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236830526}
+  - component: {fileID: 236830527}
   m_Layer: 0
   m_Name: ChatBulle
   m_TagString: Untagged
@@ -557,10 +558,22 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 342128897}
-  - {fileID: 1828477710}
   - {fileID: 53631206}
+  - {fileID: 1828477710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &236830527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236830525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c595ab3f5dbab734c9f05c9eb3a241cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Core::TPT.Core.ChatBubble
 --- !u!1 &342128896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,7 +1418,7 @@ GameObject:
   - component: {fileID: 1828477712}
   - component: {fileID: 1828477711}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
