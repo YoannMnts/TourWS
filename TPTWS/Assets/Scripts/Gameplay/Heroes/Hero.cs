@@ -32,7 +32,6 @@ namespace TPT.Gameplay.Heroes
         public int CurrentHealth { get; private set; }
         public int CurrentMana { get; private set; }
         public int CurrentSpeed { get; private set; }
-
         public int CurrentStrength { get; private set; }
         public int CurrentTurnPoints => LevelManager.Instance.GetPointsFor(this);
 

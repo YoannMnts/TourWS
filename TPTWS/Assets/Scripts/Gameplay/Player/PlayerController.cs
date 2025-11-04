@@ -14,7 +14,7 @@ namespace TPT.Gameplay.Player
         public event Action<Hero> OnHeroDespawn;
 
         [SerializeField]
-        private Transform[] spawnPoints;
+        public Transform[] spawnPoints;
 
         [field: SerializeField]
         public Color PlayerColor { get; private set; }

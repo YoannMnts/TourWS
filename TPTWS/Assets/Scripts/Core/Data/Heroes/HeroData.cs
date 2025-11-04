@@ -19,11 +19,11 @@ namespace TPT.Core.Data.Heroes
         public int MaxMana { get; private set; }
 
         [field: SerializeField]
-        public int Speed { get; private set; }
+        public int MaxMovementPoint { get; private set; }
         
         [field: SerializeField]
-        public int DeplacementPoint { get; private set; }
-
+        public int Speed { get; private set; }
+        
         [field: SerializeField]
         public int Strength { get; private set; }
 

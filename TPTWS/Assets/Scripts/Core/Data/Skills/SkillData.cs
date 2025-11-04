@@ -14,6 +14,7 @@ namespace TPT.Core.Data.Skills
 
         [field: SerializeField]
         public TargetTeam TargetTeam { get; private set; }
+        
         [field: SerializeField]
         public TargetType TargetType { get; private set; }
 
