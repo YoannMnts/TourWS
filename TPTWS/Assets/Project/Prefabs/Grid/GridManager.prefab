@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2c6aecb1854554bb51f5e1760f63ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.GridManager
-  gridSize: {x: 5, y: 5}
-  gridStartPos: {x: 0, y: 0}
-  gridPrefab: {fileID: 0}
+  gridParameters:
+  - gridSize: {x: 12, y: 12}
+    gridStartPos: {x: 0, y: 0}
+  gridPrefab: {fileID: 8671650342947442039, guid: a0ecb810ac625ac4ead5573ac26a84e4, type: 3}
   player: {fileID: 0}
 --- !u!156049354 &8622202901085803444
 Grid:

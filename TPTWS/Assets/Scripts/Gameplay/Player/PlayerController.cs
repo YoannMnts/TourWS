@@ -19,7 +19,7 @@ namespace TPT.Gameplay.Player
         [field: SerializeField]
         public Color PlayerColor { get; private set; }
         [field: SerializeField]
-        public CinemachineTargetGroup TargetGroup { get; private set; }
+        //public CinemachineTargetGroup TargetGroup { get; private set; }
 
         private Dictionary<HeroData, Hero>  heroes = new Dictionary<HeroData, Hero>();
         public IEnumerable<Hero> Heroes => heroes.Values;
@@ -49,13 +49,13 @@ namespace TPT.Gameplay.Player
             hero.name = $"{name}_{data.Name}";
             hero.ProcessSpawn(data, this, spawn);
             heroes.Add(data, hero);
-            TargetGroup.Targets.Add(new CinemachineTargetGroup.Target()
+            /*TargetGroup.Targets.Add(new CinemachineTargetGroup.Target()
             {
                 Object = hero.transform,
                 Radius = 1,
                 Weight = 1,
             });
-
+            */
             OnHeroSpawn?.Invoke(hero);
             return hero;
         }
@@ -69,7 +69,7 @@ namespace TPT.Gameplay.Player
             }
 
             hero.ProcessDespawn();
-            TargetGroup.Targets.RemoveAll(ctx => ctx.Object == hero.transform);
+            //TargetGroup.Targets.RemoveAll(ctx => ctx.Object == hero.transform);
 
             OnHeroDespawn?.Invoke(hero);
             Destroy(hero.gameObject);

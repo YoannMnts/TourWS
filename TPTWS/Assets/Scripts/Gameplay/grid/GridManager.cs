@@ -1,18 +1,17 @@
 using System;
+using System.Linq;
 using TPT.Gameplay.Player;
-using UnityEditor;
 using UnityEngine;
 
 namespace TPT.Gameplay
 {
-    public class GridManager : MonoBehaviour
+    public partial class GridManager : MonoBehaviour
     {
         private Grid grid;
+
         [Header("Grid Settings")]
         [SerializeField]
-        private Vector2 gridSize;
-        [SerializeField] 
-        private Vector2Int gridStartPos;
+        private GridParameter[] gridParameters;
         [SerializeField]
         private GameObject gridPrefab;
         
@@ -31,14 +30,7 @@ namespace TPT.Gameplay
         private void OnEnable()
         {
             InitializeHeroPosition();
-            GenerateGrid();
-        }
-
-        void OnDrawGizmos()
-        {
-            grid = GetComponent<Grid>();
-            InitializeHeroPosition();
-            GenerateGrid();
+            GenerateGrids();
         }
 
         private void InitializeHeroPosition()
@@ -48,25 +40,25 @@ namespace TPT.Gameplay
                 var heroPosition = player.spawnPoints[i].position;
                 UpdateCoordinatesAndBounds(heroPosition);
                 SnapHeroOnCell(i);
-                
-                Gizmos.color = new Color(0.44f, 1f, 0.19f);
-                Gizmos.DrawCube(bounds.center, bounds.size);
-                
             }
         }
 
-        private void GenerateGrid()
+        private void GenerateGrids()
         {
-            for (int i = 0; i < gridSize.x; i++)
+            for (int i = 0; i < gridParameters.Length; i++)
             {
-                for (int j = 0; j < gridSize.y; j++)
+                MakeGridCell(i);
+            }
+        }
+
+        private void MakeGridCell(int gridIndex)
+        {
+            for (int i = 0; i < gridParameters[gridIndex].gridSize.x; i++)
+            {
+                for (int j = 0; j < gridParameters[gridIndex].gridSize.y; j++)
                 {
-                    Vector3 pos = new Vector3(i + gridStartPos.x, 0, j + gridStartPos.y);
-                    //Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
-                        
-                    Gizmos.color = Color.white;
-                    Gizmos.DrawWireCube(pos + bounds.extents, bounds.size);
-                        
+                    Vector3 pos = new Vector3(i + gridParameters[gridIndex].gridStartPos.x, 0, j + gridParameters[gridIndex].gridStartPos.y);
+                    Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
                 }
             }
         }
@@ -78,9 +70,9 @@ namespace TPT.Gameplay
             bounds.center = grid.GetCellCenterWorld(coordinates);
         }
 
-        private void SnapHeroOnCell(int index)
+        private void SnapHeroOnCell(int heroIndex)
         {
-            player.spawnPoints[index].position = bounds.center;
+            player.spawnPoints[heroIndex].position = bounds.center;
         }
     }
 }
