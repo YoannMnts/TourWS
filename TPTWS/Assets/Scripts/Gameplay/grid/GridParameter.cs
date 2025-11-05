@@ -7,6 +7,6 @@ namespace TPT.Gameplay
     {
         public Vector2Int gridSize;
         public Vector2Int gridStartPos;
-        public Vector3[] heroSpawnPosition;
+        public Vector3Int[] heroSpawnPosition;
     }
 }

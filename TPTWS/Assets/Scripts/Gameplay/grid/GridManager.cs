@@ -19,9 +19,6 @@ namespace TPT.Gameplay
         [SerializeField]
         private PlayerController player;
 
-        private Bounds bounds;
-        private Vector3Int coordinates;
-
         private void Awake()
         {
             grid = GetComponent<Grid>();
@@ -37,9 +34,11 @@ namespace TPT.Gameplay
         {
             for (int i = 0; i < player.spawnPoints.Length; i++)
             {
-                var heroPosition = player.spawnPoints[i].position;
-                UpdateCoordinatesAndBounds(heroPosition);
-                SnapHeroOnCell(i);
+                for (int j = 0; j < gridParameters[i].heroSpawnPosition.Length; j++)
+                {
+                    var heroPosition = gridParameters[i].heroSpawnPosition[j];
+                    SnapHeroOnCell(j, heroPosition);
+                }
             }
         }
 
@@ -57,22 +56,19 @@ namespace TPT.Gameplay
             {
                 for (int j = 0; j < gridParameters[gridIndex].gridSize.y; j++)
                 {
-                    Vector3 pos = new Vector3(i + gridParameters[gridIndex].gridStartPos.x, 0, j + gridParameters[gridIndex].gridStartPos.y);
-                    Instantiate(gridPrefab, pos + bounds.extents, Quaternion.identity);
+                    Vector3 pos = new Vector3(
+                        i + gridParameters[gridIndex].gridStartPos.x,
+                        0, 
+                        j + gridParameters[gridIndex].gridStartPos.y
+                        );
+                    Instantiate(gridPrefab, pos, Quaternion.identity);
                 }
             }
         }
 
-        private void UpdateCoordinatesAndBounds(Vector3 position)
+        private void SnapHeroOnCell(int heroIndex, Vector3Int coordinates)
         {
-            coordinates = grid.WorldToCell(position);;
-            bounds = grid.GetBoundsLocal(coordinates);
-            bounds.center = grid.GetCellCenterWorld(coordinates);
-        }
-
-        private void SnapHeroOnCell(int heroIndex)
-        {
-            player.spawnPoints[heroIndex].position = bounds.center;
+            player.spawnPoints[heroIndex].position = coordinates;
         }
     }
 }

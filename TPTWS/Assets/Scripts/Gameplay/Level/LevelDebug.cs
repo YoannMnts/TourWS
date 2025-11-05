@@ -16,7 +16,6 @@ namespace TPT.Gameplay.Level
             LevelInfos infos = new LevelInfos()
             {
                 firstPlayerHeroes = player1Heroes,
-                secondPlayerHeroes = player2Heroes
             };
 
             LevelManager.Instance.StartGame(infos);

@@ -18,10 +18,9 @@ namespace TPT.Gameplay
                 for (int j = 0; j < gridParameters[i].heroSpawnPosition.Length; j++)
                 {
                     var heroPosition = gridParameters[i].heroSpawnPosition[j];
-                    UpdateCoordinatesAndBoundsGizmos(heroPosition);
-                    SnapHeroOnCellGizmos(i);
+                    SnapHeroOnCell(j, heroPosition);
                     Gizmos.color = new Color(0.44f, 1f, 0.19f);
-                    Gizmos.DrawCube(bounds.center, bounds.size);
+                    Gizmos.DrawCube(heroPosition, grid.cellSize);
                 }
             }
         }
@@ -42,21 +41,9 @@ namespace TPT.Gameplay
                 {
                     Vector3 pos = new Vector3(i + gridParameters[gridIndex].gridStartPos.x, 0, j + gridParameters[gridIndex].gridStartPos.y);
                     Gizmos.color = Color.white;
-                    Gizmos.DrawWireCube(pos + bounds.extents, bounds.size);
+                    Gizmos.DrawWireCube(pos, grid.cellSize);
                 }
             }
-        }
-
-        private void UpdateCoordinatesAndBoundsGizmos(Vector3 position)
-        {
-            coordinates = grid.WorldToCell(position);
-            bounds = grid.GetBoundsLocal(coordinates);
-            bounds.center = grid.GetCellCenterWorld(coordinates);
-        }
-
-        private void SnapHeroOnCellGizmos(int heroIndex)
-        {
-            player.spawnPoints[heroIndex].position = bounds.center;
         }
     }
 }

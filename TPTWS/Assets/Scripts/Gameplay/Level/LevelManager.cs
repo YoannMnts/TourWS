@@ -63,8 +63,6 @@ namespace TPT.Gameplay.Level
         {
             foreach (var hero in levelInfos.firstPlayerHeroes)
                 Player1.SpawnHero(hero);
-            foreach (var hero in levelInfos.secondPlayerHeroes)
-                Player2.SpawnHero(hero);
 
             MoveToNextTurn();
         }
