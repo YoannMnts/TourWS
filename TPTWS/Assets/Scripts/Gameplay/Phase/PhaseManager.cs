@@ -18,12 +18,22 @@ namespace TPT.Gameplay.Gameplay.Phase
         {
             gridManager.GenerateGrids(gridIndex);
             gridManager.InitializeHeroPositionOnCell(player.GetHeroPosition());
-            movementPhase.EnterInMovementPhase();
+            EnterInMovementPhase();
         }
-
         private void EndFight()
         {
             throw new NotImplementedException();
         }
+        
+        private void EnterInMovementPhase()
+        {
+            movementPhase.StartMovementPhase();
+        }
+        
+        private void EnterInAttackPhase()
+        {
+            attackPhase.StartAttackPhase();
+        }
+        
     }
 }

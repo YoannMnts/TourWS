@@ -5,7 +5,7 @@ namespace TPT.Gameplay.Gameplay.Phase
 {
     public class AttackPhase : MonoBehaviour
     {
-        public void EnterInAttackPhase()
+        public void StartAttackPhase()
         {
             throw new NotImplementedException();
         }

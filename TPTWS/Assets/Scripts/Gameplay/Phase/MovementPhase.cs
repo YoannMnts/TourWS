@@ -5,7 +5,7 @@ namespace TPT.Gameplay.Gameplay.Phase
 {
     public class MovementPhase : MonoBehaviour
     {
-        public void EnterInMovementPhase()
+        public void StartMovementPhase()
         {
             throw new NotImplementedException();
         }
