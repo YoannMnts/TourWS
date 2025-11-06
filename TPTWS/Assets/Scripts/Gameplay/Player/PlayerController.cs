@@ -10,11 +10,13 @@ namespace TPT.Gameplay.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        public Transform[] GetHeroPosition() => spawnPoints;
+        
         public event Action<Hero> OnHeroSpawn;
         public event Action<Hero> OnHeroDespawn;
 
         [SerializeField]
-        public Transform[] spawnPoints;
+        private Transform[] spawnPoints;
 
         [field: SerializeField]
         public Color PlayerColor { get; private set; }
@@ -25,6 +27,7 @@ namespace TPT.Gameplay.Player
         public IEnumerable<Hero> Heroes => heroes.Values;
 
         private Queue<Transform> availableSpawnPoints = new Queue<Transform>();
+
 
 
         private void Awake()
