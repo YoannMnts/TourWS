@@ -289,6 +289,11 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!4 &402320840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1594578706656146736, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +421,29 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &540335935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7347029207432048947, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &574986955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6998251023121438753, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &574986956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540335935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e2ca504a1e4ce190d3dc6b16ea412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Heroes.Hero
+  speed: 6
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +493,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1180864193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7828538451694097308, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1180864194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180864193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e2ca504a1e4ce190d3dc6b16ea412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Heroes.Hero
+  speed: 10
 --- !u!1 &1367490992
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +520,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1367490993}
+  - component: {fileID: 1367490997}
+  - component: {fileID: 1367490996}
+  - component: {fileID: 1367490995}
   - component: {fileID: 1367490994}
   m_Layer: 0
   m_Name: PhaseManager
@@ -511,6 +560,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Phase.PhaseManager
   gridManager: {fileID: 4045259118605662577}
   player: {fileID: 1612132057}
+--- !u!114 &1367490995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963309d959d54321a7a9c95527746b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Phase.HeroSelection
+  hero:
+  - {fileID: 574986956}
+  - {fileID: 1726808148}
+  - {fileID: 1180864194}
+--- !u!114 &1367490996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1b24926b104c09a77cd723d3a148fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Phase.MovementPhase
+--- !u!114 &1367490997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869e83e5f9947a2aa625ff49595a81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Phase.AttackPhase
+--- !u!1 &1442979031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2128424532321775641, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1612132056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -615,6 +709,22 @@ PrefabInstance:
       propertyPath: 'spawnPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8654449864411036507, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      propertyPath: heroSpawnPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654449864411036507, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      propertyPath: 'heroSpawnPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 574986955}
+    - target: {fileID: 8654449864411036507, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      propertyPath: 'heroSpawnPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1726808147}
+    - target: {fileID: 8654449864411036507, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      propertyPath: 'heroSpawnPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 402320840}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4589912855892295265, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
@@ -624,7 +734,16 @@ PrefabInstance:
     - {fileID: -6736328729685279009, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
     - {fileID: 664364476407251092, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7347029207432048947, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 574986956}
+    - targetCorrespondingSourceObject: {fileID: 2128424532321775641, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726808148}
+    - targetCorrespondingSourceObject: {fileID: 7828538451694097308, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1180864194}
   m_SourcePrefab: {fileID: 100100000, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
 --- !u!114 &1612132057 stripped
 MonoBehaviour:
@@ -637,6 +756,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8729b21d3b6f44b9b88333ea500c8d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Player.PlayerController
+--- !u!4 &1726808147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4399787946154727504, guid: bd4d5a60d54c8244da08e0defff7cd43, type: 3}
+  m_PrefabInstance: {fileID: 1612132056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726808148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442979031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e2ca504a1e4ce190d3dc6b16ea412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Gameplay.Heroes.Hero
+  speed: 3
 --- !u!1001 &4045259118605662576
 PrefabInstance:
   m_ObjectHideFlags: 0

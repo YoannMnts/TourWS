@@ -37,6 +37,7 @@ namespace TPT.Gameplay
 
         public void GenerateGrids(int gridIndex)
         {
+            Debug.Log("ici");
             for (int j = 0; j < gridParameters[gridIndex].gridSize.x; j++)
             {
                 for (int k = 0; k < gridParameters[gridIndex].gridSize.y; k++)

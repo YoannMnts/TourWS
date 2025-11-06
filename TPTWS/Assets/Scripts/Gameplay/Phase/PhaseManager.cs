@@ -14,6 +14,12 @@ namespace TPT.Gameplay.Gameplay.Phase
         private MovementPhase movementPhase;
         private AttackPhase attackPhase;
 
+        private void Awake()
+        {
+            movementPhase = GetComponent<MovementPhase>();
+            attackPhase = GetComponent<AttackPhase>();
+        }
+
         private void StartFight(int gridIndex)
         {
             gridManager.GenerateGrids(gridIndex);
