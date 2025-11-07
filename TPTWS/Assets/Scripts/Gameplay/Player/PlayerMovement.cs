@@ -7,7 +7,7 @@ namespace TPT.Gameplay.Player
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float moveSpeed = 5f; // Vitesse de déplacement
-        [SerializeField] private PlayerInput  playerInput;
+        private PlayerInput  playerInput;
         
         private CharacterController controller;
         
@@ -18,7 +18,7 @@ namespace TPT.Gameplay.Player
     
         void Start()
         {
-            moveAction=playerInput.actions.FindActionMap("Exploration").FindAction("Movement");
+            moveAction = playerInput.FindAction("Movement");//FindActionMap("Exploration").FindAction("Movement");
             controller = GetComponent<CharacterController>();
         }
 

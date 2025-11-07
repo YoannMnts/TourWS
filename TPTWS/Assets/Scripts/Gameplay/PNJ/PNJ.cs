@@ -4,15 +4,11 @@ namespace TPT.Gameplay.PNJ
 {
     public class PNJ : MonoBehaviour
     {
-    
         [SerializeField] private float distanceToInteract = 3f; 
         private Transform player; 
-    
         private bool isInRange = false;
-
         void Start()
         {
-            
             isInRange = false;
             IconPNJ.Instance.ClearCurrent();
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,7 +16,6 @@ namespace TPT.Gameplay.PNJ
         void Update()
         {
             float distance = Vector3.Distance(player.position, transform.position);
-
             if (distance < distanceToInteract)
             {
                 if (!isInRange)
@@ -29,8 +24,6 @@ namespace TPT.Gameplay.PNJ
                     isInRange = true;
                     IconPNJ.Instance.SetCurrentNPC(this);
                 }
-
-
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     IconPNJ .Instance.ClearCurrent();
@@ -45,11 +38,7 @@ namespace TPT.Gameplay.PNJ
                     IconPNJ.Instance.ClearCurrent();
                     return;
                 }
-            
             }
         }
-
-
-
     }
 }

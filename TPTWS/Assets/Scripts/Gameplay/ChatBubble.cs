@@ -1,17 +1,16 @@
-using UnityEngine;
-using UnityEngine.Events ;
-using UnityEngine.EventSystems ;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
-namespace TPT.Core.Core.UI
+namespace TPT.Gameplay
 {
         public class ChatBubble : MonoBehaviour
         {
                 [SerializeField] private SpriteRenderer backGround;
                 [SerializeField]  private SpriteRenderer IconE;
                 [SerializeField]  private TextMeshPro textMeshp ;
-                [SerializeField]  private string texte;
+                 [SerializeField] private string texte;
+                 [SerializeField] private float Longeur = 7f;
+                 [SerializeField] private float Hauteur = 5f;
 
                 private void Awake()
                 {
@@ -30,17 +29,10 @@ namespace TPT.Core.Core.UI
                         textMeshp.SetText(text);
                         textMeshp.ForceMeshUpdate();
                         Vector2 textSize = textMeshp.GetRenderedValues(false);
-                        Vector2 size = new Vector2(7f,5f);
+                        Vector2 size = new Vector2(Longeur,Hauteur);
                         
                         backGround.size = textSize +  size;
                         
-                }
-
-                public static void Create(Transform parent, Vector3 localPosition, string texte)
-                {
-                        Transform ChatBubble = Instantiate(Resources.Load("Prefabs/ChatBubble")) as Transform;
-                        ChatBubble.localPosition = localPosition;
-                        ChatBubble.GetComponent<ChatBubble>().Setup(texte);
                 }
         }
 }
