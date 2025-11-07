@@ -6,52 +6,56 @@ namespace TPT.Gameplay.Fights
 {
     public class FightPhase : IPhase
     {
-        public readonly FightGrid fightGrid;
+        public readonly FightGrid grid;
         public readonly IFightHero[] heroes;
 
-        public FightPhase(IFightHero[] heroes, FightGrid fightGrid)
+        public FightPhase(IFightHero[] heroes, FightGrid grid)
         {
             this.heroes = heroes;
-            this.fightGrid = fightGrid;
+            this.grid = grid;
         }
 
 
-        private void StartFight(int gridIndex)
-        {
-            
-        }
 
-        Awaitable IPhase.Begin()
+        async Awaitable IPhase.Begin()
         {
-            //GridManager.GenerateGrids(0);
-            //GridManager.InitializeHeroPositionOnCell(Player.GetHeroPosition());
-            return null;
+            grid.GenerateCells();
+            for (int i = 0; i < heroes.Length; i++)
+            {
+                FightCell cell = grid.GetNearestCellCoord(heroes[i].transform.position);
+                var fightHero = heroes[i];
+                await fightHero.MoveTo(cell.Coordinates);
+            }
         }
 
         async Awaitable IPhase.Execute()
         {
             int currentIndex = 0;
-            for (int i = 0; i < heroes.Length; i++)
+
+            while (true)
             {
-                if (IsFightFinished())
-                    break;
-                
-                IFightHero hero = heroes[i];
-                if (!hero.IsAlive)
+                for (int i = 0; i < heroes.Length; i++)
                 {
+                    if (IsFightFinished())
+                        return;
+
+                    IFightHero hero = heroes[i];
+                    if (!hero.IsAlive)
+                    {
+                        currentIndex++;
+                        if (currentIndex >= heroes.Length)
+                            currentIndex = 0;
+
+                        continue;
+                    }
+
+                    HeroTurnPhase turnPhase = new HeroTurnPhase(hero, this);
+                    await turnPhase.RunAsync();
+
                     currentIndex++;
                     if (currentIndex >= heroes.Length)
                         currentIndex = 0;
-                    
-                    continue;
                 }
-                
-                HeroTurnPhase turnPhase = new HeroTurnPhase(hero, this);
-                await turnPhase.RunAsync();
-                
-                currentIndex++;
-                if (currentIndex >= heroes.Length)
-                    currentIndex = 0;
             }
         }
 
@@ -73,7 +77,8 @@ namespace TPT.Gameplay.Fights
 
         Awaitable IPhase.End()
         {
-            return null;
+            grid.DestroyCells();
+            return PhaseManager.CompletedPhase;
         }
     }
 }

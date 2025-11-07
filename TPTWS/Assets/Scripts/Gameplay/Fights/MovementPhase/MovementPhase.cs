@@ -8,7 +8,7 @@ namespace TPT.Gameplay.Fights.MovementPhase
     {
         protected IFightHero Hero => heroTurnPhase.hero;
         
-        protected FightGrid Grid => heroTurnPhase.fightPhase.fightGrid;
+        protected FightGrid Grid => heroTurnPhase.fightPhase.grid;
         
         protected readonly HeroTurnPhase heroTurnPhase;
 
@@ -19,7 +19,7 @@ namespace TPT.Gameplay.Fights.MovementPhase
 
         Awaitable IPhase.Begin()
         {
-            return null;
+            return PhaseManager.CompletedPhase;
         }
 
         async Awaitable IPhase.Execute()
@@ -29,7 +29,7 @@ namespace TPT.Gameplay.Fights.MovementPhase
 
         Awaitable IPhase.End()
         {
-            return null;
+            return PhaseManager.CompletedPhase;
         }
         
         protected abstract Awaitable Execute();

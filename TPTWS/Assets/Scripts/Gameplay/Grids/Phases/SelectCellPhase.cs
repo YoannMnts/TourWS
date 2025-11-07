@@ -36,19 +36,21 @@ namespace TPT.Gameplay.Grids.Phases
             ListPool<CellCoordinate>.Get(out cells);
             pattern.GetCells(grid, startCoordinate, cells);
             
-            return null;
+            return PhaseManager.CompletedPhase;
         }
 
         async Awaitable IPhase.Execute()
         {
-            if (!HasSelected)
+            while (!HasSelected)
+            {
                 await Awaitable.NextFrameAsync();
+            }
         }
 
         Awaitable IPhase.End()
         {
             ListPool<CellCoordinate>.Release(cells);
-            return null;
+            return PhaseManager.CompletedPhase;
         }
 
     }

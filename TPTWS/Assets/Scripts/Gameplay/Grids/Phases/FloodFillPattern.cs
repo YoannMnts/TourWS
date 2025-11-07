@@ -29,20 +29,33 @@ namespace TPT.Gameplay.Grids.Phases
 
         public void Flood(FightGrid fightGrid, Vector2Int from, List<Vector2Int> cells, int budget)
         {
-            Vector2Int up = new Vector2Int(from.x , from.y + 1);
+            Vector2Int up = new Vector2Int(from.x, from.y + 1);
             Vector2Int down = new Vector2Int(from.x, from.y - 1);
             Vector2Int right = new Vector2Int(from.x + 1, from.y);
             Vector2Int left = new Vector2Int(from.x - 1, from.y);
-
+            
             CheckCell(fightGrid,  up, cells, budget);
             CheckCell(fightGrid, down, cells, budget);
             CheckCell(fightGrid, right, cells, budget);
             CheckCell(fightGrid, left, cells, budget);
+            /*
+            Vector2Int ur = new Vector2Int(from.x + 1, from.y + 1);
+            Vector2Int ul = new Vector2Int(from.x - 1, from.y + 1);
+            Vector2Int dr = new Vector2Int(from.x + 1, from.y - 1);
+            Vector2Int dl = new Vector2Int(from.x - 1, from.y - 1);
+
+            CheckCell(fightGrid, ur, cells, budget);
+            CheckCell(fightGrid, ul, cells, budget);
+            CheckCell(fightGrid, dr, cells, budget);
+            CheckCell(fightGrid, dl, cells, budget);
+            */
+            
+            Debug.Log($"From {from} to {up} => {down} => {right} => {left}");
         }
 
         private void CheckCell(FightGrid fightGrid,  Vector2Int cell, List<Vector2Int> cells, int budget)
         {
-            if (!cells.Contains(cell) && fightGrid.HasCell(cell.x, cell.y))
+            if (!cells.Contains(cell))
             {
                 cells.Add(cell);
                 if(budget > 0)

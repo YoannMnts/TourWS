@@ -1,10 +1,14 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.Grids;
 using UnityEngine;
 
 namespace TPT.Gameplay.Fights.Attack
 {
     public abstract class AttackPhase : IPhase
     {
+        protected IFightHero Hero => heroTurnPhase.hero;
+        protected FightGrid Grid => heroTurnPhase.fightPhase.grid;
+
         private readonly HeroTurnPhase heroTurnPhase;
 
         public AttackPhase(HeroTurnPhase heroTurnPhase)
@@ -14,7 +18,7 @@ namespace TPT.Gameplay.Fights.Attack
 
         Awaitable IPhase.Begin()
         {
-            return null;
+            return PhaseManager.CompletedPhase;
         }
 
         async Awaitable IPhase.Execute()
@@ -24,7 +28,7 @@ namespace TPT.Gameplay.Fights.Attack
 
         Awaitable IPhase.End()
         {
-            return null;
+            return PhaseManager.CompletedPhase;
         }
 
         protected abstract Awaitable Execute();

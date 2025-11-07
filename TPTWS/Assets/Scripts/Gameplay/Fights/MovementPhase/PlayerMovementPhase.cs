@@ -14,7 +14,7 @@ namespace TPT.Gameplay.Fights.MovementPhase
 
         protected override async Awaitable Execute()
         {
-            FloodFillPattern pattern = new FloodFillPattern(Hero.MovementRange);
+            FloodFillPattern pattern = new FloodFillPattern(Hero.MovementSpeed);
             
             SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, pattern);
             

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using TPT.Core.Phases;
-using TPT.Gameplay.Fights;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace TPT.Gameplay.Grids
 {
     [RequireComponent(typeof(BoxCollider))]
     [ExecuteInEditMode]
-    public class FightGrid : MonoBehaviour, IPhaseListener<FightPhase>
+    public class FightGrid : MonoBehaviour
     {
         [SerializeField] 
         private BoxCollider zone;
@@ -17,12 +18,19 @@ namespace TPT.Gameplay.Grids
         private FightCell cellPrefab;
         [SerializeField] 
         private Transform cellRoot;
+
+        [field: SerializeField] 
+        public EnemySpawnPoints[] Enemies { get; private set; }
+        [field: SerializeField] 
+        public Transform[] PlayerSpawnPoints { get; private set; }
         
         private Dictionary<CellCoordinate, FightCell> cells;
         
 
         [SerializeField, HideInInspector]
         private FightGridManager manager;
+        
+        
 
         private void Reset()
         {
@@ -42,13 +50,11 @@ namespace TPT.Gameplay.Grids
         private void OnEnable()
         {
             manager.AddGrid(this);
-            this.AddListener();
         }
 
         private void OnDisable()
         {
             manager.RemoveGrid(this);
-            this.RemoveListener();
         }
         
         
@@ -62,6 +68,8 @@ namespace TPT.Gameplay.Grids
                 {
                     Vector3 vector3 = new Vector3(manager.CellSize, .2f, manager.CellSize);
                     Gizmos.DrawWireCube(cellCoordinate.position, vector3);
+                    
+                    Handles.Label(cellCoordinate.position, $"{cellCoordinate.x} : {cellCoordinate.y}");
                 }
             }
         }
@@ -103,17 +111,6 @@ namespace TPT.Gameplay.Grids
             }
         }
 
-        private void DestroyCells()
-        {
-            foreach ((_, FightCell fightCell) in cells)
-            {
-                fightCell.Unbind();
-                Destroy(fightCell.gameObject);
-            }
-            
-            cells.Clear();
-        }
-
         public bool HasCell(int x, int y) => TryGetCell(x, y, out _);
         public bool TryGetCell(int x, int y, out FightCell cell)
         {
@@ -150,32 +147,33 @@ namespace TPT.Gameplay.Grids
             
             return nearestCell;
         }
-        void IPhaseListener<FightPhase>.OnPhaseBegin(FightPhase phase)
+        public void GenerateCells()
         {
-            if (phase.fightGrid == this)
-            {
-                DestroyCells();
-                
-                using (ListPool<CellCoordinate>.Get(out var list))
-                {
-                    GetCells(list);
-                    foreach (var cellCoordinate in list)
-                    {
-                        FightCell instance = Instantiate(cellPrefab, cellRoot);
-                        instance.transform.position = cellCoordinate.position;
-                        cells.Add(cellCoordinate, instance);
+            DestroyCells();
 
-                        instance.Bind(cellCoordinate, this);
-                    }
+            using (ListPool<CellCoordinate>.Get(out var list))
+            {
+                GetCells(list);
+                foreach (var cellCoordinate in list)
+                {
+                    FightCell instance = Instantiate(cellPrefab, cellRoot);
+                    instance.transform.position = cellCoordinate.position;
+                    cells.Add(cellCoordinate, instance);
+
+                    instance.Bind(cellCoordinate, this);
                 }
             }
         }
-        void IPhaseListener<FightPhase>.OnPhaseEnd(FightPhase phase)
+
+        public void DestroyCells()
         {
-            if (phase.fightGrid == this)
+            foreach ((_, FightCell fightCell) in cells)
             {
-                DestroyCells();
+                fightCell.Unbind();
+                Destroy(fightCell.gameObject);
             }
+            
+            cells.Clear();
         }
 
     }

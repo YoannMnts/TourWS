@@ -1,16 +1,77 @@
-﻿using TPT.Core.Core.Data.Heroes;
+﻿using System;
+using System.Collections.Generic;
+using DG.Tweening;
+using TPT.Core.Core.Data.Heroes;
+using TPT.Gameplay.Fights;
+using TPT.Gameplay.Fights.Attack;
+using TPT.Gameplay.Grids;
+using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TPT.Gameplay.Heroes
 {
-    public class Hero : MonoBehaviour
+    public abstract class Hero : MonoBehaviour, IFightHero
     {
-        public int currentMovementPoints;
         
-        public int currentAttack;
+        protected class DebugSkill : IFightSkill
+        {
+            public async Awaitable Perform(IFightHero hero, FightGrid grid, CellCoordinate cellCoordinate)
+            {
+                Debug.Log("Debug attack");
+                await Awaitable.WaitForSecondsAsync(1);
+            }
+
+            public bool GetPattern(out ICellPattern pattern)
+            {
+                pattern = null;
+                return false;
+            }
+        }
+
+        public int MovementSpeed { get; private set; } = 2;
+        public int Speed => Random.Range(0, 10);
+
+        public int CurrentAttack { get; private set; }
+
+        public int CurrentHealth { get; private set; } = 100;
         
-        public int currentHealth;
+        public HeroData HeroData { get; private set; }
         
-        public HeroData heroData;
+        public List<IFightSkill> skills = new List<IFightSkill>()
+        {
+            new DebugSkill(),
+        };
+        
+        public abstract bool IsPlayerHero { get; }
+        public bool IsAlive => CurrentHealth > 0;
+        public CellCoordinate Coordinates { get; private set; }
+        IReadOnlyList<IFightSkill> IFightHero.Skills => skills.AsReadOnly();
+
+        public async Awaitable OnTurnBegin()
+        {
+            Debug.Log($"Starting turn for {name}", gameObject);
+            await Awaitable.WaitForSecondsAsync(.2f);
+        }
+
+        public async Awaitable OnTurnEnd()
+        {
+            Debug.Log($"Ending turn for {name}", gameObject);
+            await Awaitable.WaitForSecondsAsync(.2f);
+        }
+
+        public async Awaitable MoveTo(CellCoordinate targetCoordinates)
+        {
+            Coordinates = targetCoordinates;
+            
+            await transform.DOMove(Coordinates.position, .5f)
+                .SetEase(Ease.OutQuint)
+                .AsyncWaitForCompletion();
+        }
+
+        int IComparable<IFightHero>.CompareTo(IFightHero other)
+        {
+            return Speed.CompareTo(other.Speed);
+        }
     }
 }
