@@ -8,18 +8,20 @@ namespace TPT.Gameplay
     public partial class GridManager : MonoBehaviour
     {
         private Grid grid;
-        private Vector3 demiGridCellSize;
+        private Vector3 halfCellSize;
+        private bool canSnap = true;
 
         [Header("Grid Settings")]
         [SerializeField]
         private GridParameter[] gridParameters;
         [SerializeField]
         private GameObject gridPrefab;
-        
+
+
         private void Awake()
         {
             grid = GetComponent<Grid>();
-            demiGridCellSize = grid.cellSize * 0.5f;
+            halfCellSize = grid.cellSize * 0.5f;
         }
 
         public void InitializeHeroPositionOnCell(Transform[] heroTransform)
@@ -28,34 +30,38 @@ namespace TPT.Gameplay
             {
                 for (int j = 0; j < gridParameters[i].heroSpawnPosition.Length; j++)
                 {
-                    var heroPosition = gridParameters[i].heroSpawnPosition[j] + 
-                                       new Vector3Int(gridParameters[i].gridStartPos.x, 0, gridParameters[i].gridStartPos.y);
+                    var heroPosition = gridParameters[i].heroSpawnPosition[j] + GetGridStartPos(i);
                     SnapHeroOnCell(heroTransform[j], heroPosition);
                 }
             }
         }
-
+        
         public void GenerateGrids(int gridIndex)
         {
-            Debug.Log("ici");
             for (int j = 0; j < gridParameters[gridIndex].gridSize.x; j++)
             {
                 for (int k = 0; k < gridParameters[gridIndex].gridSize.y; k++)
                 {
-                    Vector3 pos = new Vector3(
-                        j + gridParameters[gridIndex].gridStartPos.x,
-                        0, 
-                        k + gridParameters[gridIndex].gridStartPos.y
-                        )
-                        + demiGridCellSize;
+                    Vector3 pos = new Vector3(j, 0, k) + halfCellSize + GetGridStartPos(gridIndex);
                     Instantiate(gridPrefab, pos, Quaternion.identity);
                 }
             }
         }
 
-        public void SnapHeroOnCell(Transform heroTransform, Vector3 coordinates)
+        public void EnableOrDisableSnapping(bool enable)
         {
-            heroTransform.position = coordinates;
+            canSnap = enable;
+        }
+        
+        private void SnapHeroOnCell(Transform heroTransform, Vector3 coordinates)
+        {
+            if (canSnap)
+                heroTransform.position = coordinates;
+        }
+        
+        private Vector3Int GetGridStartPos(int i)
+        {
+            return new Vector3Int(gridParameters[i].gridStartPos.x, 0, gridParameters[i].gridStartPos.y);
         }
     }
 }

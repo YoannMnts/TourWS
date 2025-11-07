@@ -20,6 +20,11 @@ namespace TPT.Gameplay.Gameplay.Phase
             attackPhase = GetComponent<AttackPhase>();
         }
 
+        private void OnEnable()
+        {
+            player.StartFight += StartFight;
+        }
+
         private void StartFight(int gridIndex)
         {
             gridManager.GenerateGrids(gridIndex);

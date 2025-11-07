@@ -12,7 +12,7 @@ namespace TPT.Gameplay
         void OnDrawGizmos()
         {
             grid = GetComponent<Grid>();
-            demiGridCellSize = grid.cellSize * 0.5f;
+            halfCellSize = grid.cellSize * 0.5f;
             GenerateGridsGizmos();
             InitializeHeroPositionGizmos(player.GetHeroPosition());
         }
@@ -25,7 +25,7 @@ namespace TPT.Gameplay
                 {
                     Vector3 heroPosition = gridParameters[i].heroSpawnPosition[j] + 
                                        new Vector3Int(gridParameters[i].gridStartPos.x, 0, gridParameters[i].gridStartPos.y) +
-                                       demiGridCellSize;
+                                       halfCellSize;
                     SnapHeroOnCell(heroTransform[j], heroPosition);
                     Gizmos.color = new Color(0.44f, 1f, 0.19f);
                     Gizmos.DrawCube(heroPosition, grid.cellSize);
@@ -46,7 +46,7 @@ namespace TPT.Gameplay
                                           0, 
                                           k + gridParameters[i].gridStartPos.y
                                           ) 
-                                      + demiGridCellSize;
+                                      + halfCellSize;
                         Gizmos.color = Color.white;
                         Gizmos.DrawWireCube(pos, grid.cellSize);
                     }
