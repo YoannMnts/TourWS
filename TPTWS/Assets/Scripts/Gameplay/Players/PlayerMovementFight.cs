@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players
 {
     public class PlayerMovementFight : MonoBehaviour
     {

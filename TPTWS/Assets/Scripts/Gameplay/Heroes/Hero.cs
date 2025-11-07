@@ -1,7 +1,7 @@
 ﻿using TPT.Core.Core.Data.Heroes;
 using UnityEngine;
 
-namespace TPT.Gameplay.Gameplay.Heroes
+namespace TPT.Gameplay.Heroes
 {
     public class Hero : MonoBehaviour
     {

@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
-using Unity.Cinemachine;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players
 {
     public class PlayerController : MonoBehaviour
     {
-        public event Action<int> StartFight;
         public Transform[] GetHeroPosition() => heroSpawnPoints;
 
         [SerializeField]
         private Transform[] heroSpawnPoints;
-
+        
         private void EnterInFight()
         {
-            StartFight?.Invoke(0);
+            //FightPhase fightPhase = new FightPhase(this, gridManager);
+            //fightPhase.Run();
         }
     }
 }
