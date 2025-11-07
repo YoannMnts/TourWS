@@ -7,7 +7,6 @@ namespace TPT.Gameplay.PNJ
     {
         public static IconPNJ Instance;
         private PNJ currentNPC;
-        public ChatBubble chatBubble;
         [SerializeField] private float IconR = 1f;
     
         [Header("Image UI de l'icône")]
@@ -21,6 +20,7 @@ namespace TPT.Gameplay.PNJ
         void Awake()
         {
             Instance = this;
+
             if (mainCamera == null)
                 mainCamera = Camera.main;
             if (leftClickIcon == null)
@@ -40,6 +40,7 @@ namespace TPT.Gameplay.PNJ
                     leftClickIcon.rectTransform.position = screenPos;
                     //chatBubble.rectTransform.position = screenPos;
                     leftClickIcon.enabled = true; return;
+                    
                 }
             }
         }
@@ -51,6 +52,8 @@ namespace TPT.Gameplay.PNJ
         {
             leftClickIcon.enabled = false;
             currentNPC = null;
+
+            
         }
     }
 }

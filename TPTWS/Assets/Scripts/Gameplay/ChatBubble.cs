@@ -6,7 +6,6 @@ namespace TPT.Gameplay
         public class ChatBubble : MonoBehaviour
         {
                 [SerializeField] private SpriteRenderer backGround;
-                [SerializeField]  private SpriteRenderer IconE;
                 [SerializeField]  private TextMeshPro textMeshp ;
                  [SerializeField] private string texte;
                  [SerializeField] private float Longeur = 7f;
@@ -15,13 +14,14 @@ namespace TPT.Gameplay
                 private void Awake()
                 {
                         backGround = transform.Find("BG").GetComponent<SpriteRenderer>();
-                        IconE = transform.Find("icon").GetComponent<SpriteRenderer>();
                         textMeshp = transform.Find("Text").GetComponent<TextMeshPro>();
+                        
                 }
 
                 private void Start()
                 {
                         Setup(texte);
+                        Hide();
                 }
 
                 private void Setup(string text)
@@ -33,6 +33,14 @@ namespace TPT.Gameplay
                         
                         backGround.size = textSize +  size;
                         
+                }
+                public void Show()
+                {
+                        gameObject.SetActive(true);
+                }
+                public void Hide()
+                {
+                        gameObject.SetActive(false);
                 }
         }
 }
