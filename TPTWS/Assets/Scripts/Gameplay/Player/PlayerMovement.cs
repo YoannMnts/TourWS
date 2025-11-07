@@ -1,37 +1,40 @@
-using TPT.Gameplay.PNJ;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace TPT.Gameplay.Player
 {
-    public class PlayerMovement : MonoBehaviour
-    {
-        [SerializeField] private float moveSpeed = 5f; // Vitesse de déplacement
-        private PlayerInput  playerInput;
-        
-        private CharacterController controller;
-        
-        private Vector2 inputDirection;
-        private Vector3 targetVelocity;
-        private Vector3 currentVelocity;
-        private InputAction moveAction;
-    
-        void Start()
+        [RequireComponent(typeof(CharacterController))]
+        public class PlayerMovement : MonoBehaviour
         {
-            moveAction = playerInput.FindAction("Movement");//FindActionMap("Exploration").FindAction("Movement");
-            controller = GetComponent<CharacterController>();
-        }
+                public float speed = 5f; // Vitesse de déplacement
+                public float gravity = -9.81f; // Gravité
 
-        void Update()
-        {
-            inputDirection = moveAction.ReadValue<Vector2>();
-            targetVelocity = new Vector3(inputDirection.x, 0f, inputDirection.y)* moveSpeed;
-        }
+                private CharacterController controller;
+                private Vector3 velocity;
+                private bool isGrounded;
 
-        void FixedUpdate()
-        {
-            controller.Move(targetVelocity * Time.deltaTime);
-        }
+                void Start()
+                {
+                        controller = GetComponent<CharacterController>();
+                }
 
-    }
+                void Update()
+                {
+                        // Vérifie si le joueur est au sol
+                        isGrounded = controller.isGrounded;
+                        if (isGrounded && velocity.y < 0)
+                        {
+                                velocity.y = -2f; // petite valeur pour rester collé au sol
+                        }
+                        
+                        float moveX = Input.GetAxis("Horizontal"); // A/D ou flèches
+                        float moveZ = Input.GetAxis("Vertical"); // W/S ou flèches
+                        
+                        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+                        controller.Move(move * speed * Time.deltaTime);
+                        
+                        velocity.y += gravity * Time.deltaTime;
+                        controller.Move(velocity * Time.deltaTime);
+                }
+        }
 }

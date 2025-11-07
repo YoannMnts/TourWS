@@ -376,4 +376,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttaqueSpecial(InputAction.CallbackContext context);
     }
+
+    public InputAction Attaque_Move; // n'existe pas
 }
