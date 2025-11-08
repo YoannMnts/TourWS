@@ -19,8 +19,8 @@ namespace TPT.Core.Core.HeroData
 
         [field: SerializeField]
         public int Strength { get; private set; }
-
+        
         [field: SerializeField]
-        public GameObject Prefab { get; private set; }
+        public  SkillData.SkillData [] Skills { get; private set; }
     }
 }

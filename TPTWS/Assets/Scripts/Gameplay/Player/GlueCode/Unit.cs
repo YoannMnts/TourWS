@@ -7,7 +7,7 @@ namespace TPT.Gameplay.Player.GlueCode
     public class Unit : MonoBehaviour
     {
       public HeroData data;
-      public int currentHP;
+      private int currentHP;
 
       private void Start()
       {

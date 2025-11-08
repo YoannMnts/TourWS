@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f91fb6ebfec0fd64d81e3f0fc26ed253, type: 3}
-  m_Name: Skill
+  m_Name: SkillATT 2
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Core.HeroData.SkillData.SkillData
-  <Name>k__BackingField: BerzerkATT
+  <Name>k__BackingField: PrestATT
   <Description>k__BackingField: 
   <Range>k__BackingField: 1
   <Power>k__BackingField: 20
-  <Prefab>k__BackingField: {fileID: 0}

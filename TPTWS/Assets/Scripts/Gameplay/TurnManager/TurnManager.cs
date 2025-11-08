@@ -56,7 +56,7 @@ namespace TPT.Gameplay.TurnManager
                         Unit currentHero = heroes[heroIndex];
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-                                Debug.Log(currentHero.name + " doit jouer !");
+                                Debug.Log(currentHero.name + " doit jouer !"+"Il te reste"+heroes);
                                 currentHero.GetComponent<ATTInteraction>().SetCanAct(true);
                         }
                         // On attend que Attaque.cs appelle PlayerAttack()
