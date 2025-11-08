@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TPT.Core;
+using TPT.Gameplay.PNJ;
 using TPT.Core.Core.HeroData;
 using TPT.Gameplay.Player;
 using TPT.Gameplay.Player.GlueCode;
@@ -11,8 +11,7 @@ namespace TPT.Gameplay.TurnManager
         public class TurnManager : MonoBehaviour
         {
                 public static TurnManager Instance;
-                public HeroData heroData;
-                public HeroData EnemyData;
+                public InteractPNJ GO;
                 public List<Unit> heroes = new List<Unit>();
                 public List<Unit> enemies = new List<Unit>();
 
@@ -54,9 +53,9 @@ namespace TPT.Gameplay.TurnManager
                 void HeroTurn()
                 {
                         Unit currentHero = heroes[heroIndex];
-                        if (Input.GetKeyDown(KeyCode.Space))
+                        if (Input.GetKeyDown(KeyCode.Space)&& GO.fighting)
                         {
-                                Debug.Log(currentHero.name + " doit jouer !"+"Il te reste"+heroes);
+                                Debug.Log(currentHero.name + " doit jouer !");
                                 currentHero.GetComponent<ATTInteraction>().SetCanAct(true);
                         }
                         // On attend que Attaque.cs appelle PlayerAttack()
@@ -71,7 +70,8 @@ namespace TPT.Gameplay.TurnManager
                         {
 
                                 Debug.Log(currentEnemy.name + " joue !");
-                                Debug.Log(EnemyData.MaxHealth);
+                                
+                                
 
                                 NextEnemy();
                         }
@@ -105,16 +105,16 @@ namespace TPT.Gameplay.TurnManager
                 {
                         Unit currentHero = heroes[heroIndex];
                         Unit target = enemies[enemyIndex];
-                        UnitAtt att = currentHero.GetComponent<UnitAtt>();
+                        Unit att = currentHero.GetComponent<Unit>();
 
                         if (special)
                         {
-                                Debug.Log(currentHero.name + " utilise l'attaque spéciale !");
+                                
                                 att.EFF(target);
                         }
                         else
                         {
-                                Debug.Log(currentHero.name + " attaque !");
+                                
                                 att.Attack(target);
                         }
 

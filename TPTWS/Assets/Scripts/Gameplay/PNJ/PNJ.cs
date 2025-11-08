@@ -6,9 +6,11 @@ namespace TPT.Gameplay.PNJ
     {
         [SerializeField] private float distanceToInteract = 3f; 
         private Transform player; 
+        private InteractPNJ interact;
         private bool isInRange = false;
         void Start()
         {
+            interact=GetComponent<InteractPNJ>();
             isInRange = false;
             IconPNJ.Instance.ClearCurrent();
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -26,6 +28,7 @@ namespace TPT.Gameplay.PNJ
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    interact.Interact();
                     IconPNJ .Instance.ClearCurrent();
                 }
             }

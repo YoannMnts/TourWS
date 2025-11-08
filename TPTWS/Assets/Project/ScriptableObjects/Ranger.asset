@@ -18,5 +18,5 @@ MonoBehaviour:
   <Speed>k__BackingField: 3
   <Strength>k__BackingField: 75
   <Skills>k__BackingField:
-  - {fileID: 11400000, guid: 89eac3895434bce439e507769fd78a3b, type: 2}
-  - {fileID: 11400000, guid: fbeaf0951d48d6c448a27913fd95227c, type: 2}
+  - {fileID: 11400000, guid: cb5f23a455c26f745ac585308473522b, type: 2}
+  - {fileID: 11400000, guid: 43fbf933c7d5f824e908f715322e9f20, type: 2}
