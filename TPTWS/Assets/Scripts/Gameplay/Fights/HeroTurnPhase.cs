@@ -15,7 +15,7 @@ namespace TPT.Gameplay.Fights
             this.hero = hero;
             this.fightPhase = fightPhase;
         }
-
+        
         async Awaitable IPhase.Begin()
         {
             await hero.OnTurnBegin();

@@ -29,15 +29,20 @@ namespace TPT.Gameplay.Heroes
             }
         }
 
+        [field: SerializeField]
         public int MovementSpeed { get; private set; } = 2;
-        public int Speed => Random.Range(0, 10);
-
+        
+        [field: SerializeField]
+        public int Speed { get; private set; } = 1;
+        
         public int CurrentAttack { get; private set; }
 
         public int CurrentHealth { get; private set; } = 100;
         
+        [field: SerializeField]
         public HeroData HeroData { get; private set; }
         
+        [field: SerializeField]
         public List<IFightSkill> skills = new List<IFightSkill>()
         {
             new DebugSkill(),

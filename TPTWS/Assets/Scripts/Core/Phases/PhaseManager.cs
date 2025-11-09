@@ -51,7 +51,6 @@ namespace TPT.Core.Phases
 
                     foreach (var listener in list)
                         listener.OnPhaseEnd(phase);
-
                     await phase.End();
                 }
             }
