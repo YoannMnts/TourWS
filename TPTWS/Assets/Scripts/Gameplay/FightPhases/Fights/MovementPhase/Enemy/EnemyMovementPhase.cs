@@ -1,4 +1,5 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights;
 using UnityEngine;
 
 namespace TPT.Gameplay.Fights.MovementPhase

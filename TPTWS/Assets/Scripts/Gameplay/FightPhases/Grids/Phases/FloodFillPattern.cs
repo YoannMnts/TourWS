@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using TPT.Gameplay.Grids;
+using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace TPT.Gameplay.Grids.Phases
+namespace TPT.Gameplay.FightPhases.Grids.Phases
 {
     public class FloodFillPattern : ICellPattern
     {

@@ -1,9 +1,12 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights.AttackPhase.Player;
+using TPT.Gameplay.FightPhases.Fights.MovementPhase.Player;
+using TPT.Gameplay.Fights;
 using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Fights.MovementPhase;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights
+namespace TPT.Gameplay.FightPhases.Fights
 {
     public class HeroTurnPhase : IPhase
     {
@@ -23,13 +26,13 @@ namespace TPT.Gameplay.Fights
 
         async Awaitable IPhase.Execute()
         {
-            MovementPhase.MovementPhase movementPhase = hero.IsPlayerHero ? 
+            Gameplay.Fights.MovementPhase.MovementPhase movementPhase = hero.IsPlayerHero ? 
                 new PlayerMovementPhase(this) :
                 new EnemyMovementPhase(this);
             
             await movementPhase.RunAsync();
             
-            AttackPhase attackPhase = hero.IsPlayerHero ? 
+            AttackPhase.AttackPhase attackPhase = hero.IsPlayerHero ? 
                 new PlayerAttackPhase(this) :
                 new EnemyAttackPhase(this);
             

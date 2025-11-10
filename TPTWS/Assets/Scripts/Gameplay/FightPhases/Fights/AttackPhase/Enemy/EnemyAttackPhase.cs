@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights;
+using TPT.Gameplay.FightPhases.Fights.AttackPhase;
 using UnityEditor.VersionControl;
 using UnityEngine;
 

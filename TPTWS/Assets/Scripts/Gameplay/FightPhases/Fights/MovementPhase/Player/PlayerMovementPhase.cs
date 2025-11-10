@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Grids.Phases;
+using TPT.Gameplay.Fights;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights.MovementPhase
+namespace TPT.Gameplay.FightPhases.Fights.MovementPhase.Player
 {
-    public class PlayerMovementPhase : MovementPhase
+    public class PlayerMovementPhase : Gameplay.Fights.MovementPhase.MovementPhase
     {
         public PlayerMovementPhase(HeroTurnPhase heroTurnPhase) : base(heroTurnPhase)
         {
@@ -23,7 +25,8 @@ namespace TPT.Gameplay.Fights.MovementPhase
             await selectCellPhase.RunAsync();
 
             CellCoordinate targetCoordinates = selectCellPhase.SelectedCoordinate;
-            
+            Debug.Log($"coordinates good ? : {selectCellPhase.Cells.Contains(targetCoordinates)}, target coordinates : {targetCoordinates.x}, {targetCoordinates.y}");
+            //tableau Cells pas bon
             if (selectCellPhase.Cells.Contains(targetCoordinates))
             {
                 await Hero.MoveTo(targetCoordinates);

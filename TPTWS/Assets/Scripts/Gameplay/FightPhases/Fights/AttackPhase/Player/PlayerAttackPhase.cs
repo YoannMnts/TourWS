@@ -1,10 +1,11 @@
 ﻿using System;
 using TPT.Core.Phases;
+using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights.Attack
+namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
 {
     public class PlayerAttackPhase : AttackPhase
     {
