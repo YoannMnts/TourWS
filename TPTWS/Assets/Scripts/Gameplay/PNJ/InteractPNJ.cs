@@ -22,13 +22,16 @@ namespace TPT.Gameplay.PNJ
                                 Debug.Log("Interact");
                                 fighting = true;
                                 // Cache l’icône
+                                playerMovement.enabled = false;
                                 iconPNJ.ClearCurrent();
                                 chatBubble.Show(ChatText);
+                                
                                 TextCount++;
                         }
                         else
                         {
                                 chatBubble.Hide();
+                                playerMovement.enabled = true;
                                 TextCount = 0;
                         }
                 }
