@@ -18,11 +18,14 @@ namespace TPT.Gameplay.Grids.Phases
             using (ListPool<Vector2Int>.Get(out var list))
             {
                 Flood(fightGrid, new Vector2Int(coordinate.x, coordinate.y), list, range);
-
+                
                 foreach (Vector2Int coord in list)
                 {
-                    if(fightGrid.TryGetCell(coord.x, coord.y, out FightCell cell))
+                    if (fightGrid.TryGetCell(coord.x, coord.y, out FightCell cell))
+                    {
+                        Debug.Log($"list of cells by flood : {coord}");
                         cells.Add(cell.Coordinates);
+                    }
                 }
             }
         }
@@ -34,21 +37,11 @@ namespace TPT.Gameplay.Grids.Phases
             Vector2Int right = new Vector2Int(from.x + 1, from.y);
             Vector2Int left = new Vector2Int(from.x - 1, from.y);
             
-            CheckCell(fightGrid,  up, cells, budget);
-            CheckCell(fightGrid, down, cells, budget);
+            CheckCell(fightGrid, from, cells, budget);
             CheckCell(fightGrid, right, cells, budget);
             CheckCell(fightGrid, left, cells, budget);
-            /*
-            Vector2Int ur = new Vector2Int(from.x + 1, from.y + 1);
-            Vector2Int ul = new Vector2Int(from.x - 1, from.y + 1);
-            Vector2Int dr = new Vector2Int(from.x + 1, from.y - 1);
-            Vector2Int dl = new Vector2Int(from.x - 1, from.y - 1);
-
-            CheckCell(fightGrid, ur, cells, budget);
-            CheckCell(fightGrid, ul, cells, budget);
-            CheckCell(fightGrid, dr, cells, budget);
-            CheckCell(fightGrid, dl, cells, budget);
-            */
+            CheckCell(fightGrid,  up, cells, budget);
+            CheckCell(fightGrid, down, cells, budget);
             
             Debug.Log($"From {from} to {up} => {down} => {right} => {left}");
         }
