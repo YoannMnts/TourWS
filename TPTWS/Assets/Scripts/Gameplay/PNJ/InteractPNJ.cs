@@ -5,34 +5,59 @@ namespace TPT.Gameplay.PNJ
         public class InteractPNJ : MonoBehaviour
         {
                 [SerializeField] private string ChatText;
-                public IconPNJ iconPNJ;
-                public ChatBubble chatBubble;
-                public PlayerMovement playerMovement;
+                [SerializeField] private string ChatText2;
+                [SerializeField] private string ChatText3;
+                [SerializeField] private IconPNJ iconPNJ;
+                [SerializeField] private ChatBubble chatBubble;
+                [SerializeField] private PlayerMovement playerMovement;
                 public bool fighting = false;
                 private int TextCount = 0;
 
                 private void Start()
                 {
+                        playerMovement.enabled = false;
+                        iconPNJ.ClearCurrent();
+                        chatBubble.Show(ChatText);
+                                
+                        TextCount++;
                 }
                 
                 public void Interact()
                 {
-                        if (TextCount==0)
+                        if (TextCount == 0)
                         {
-                                Debug.Log("Interact");
-                                fighting = true;
-                                // Cache l’icône
                                 playerMovement.enabled = false;
                                 iconPNJ.ClearCurrent();
                                 chatBubble.Show(ChatText);
                                 
                                 TextCount++;
                         }
-                        else
+                        else if (TextCount==1)
                         {
-                                chatBubble.Hide();
+                                Debug.Log("Interact");
+                                fighting = true;
+                                // Cache l’icône
+                                playerMovement.enabled = false;
+                                iconPNJ.ClearCurrent();
+                                chatBubble.Show(ChatText2);
+                                
+                                TextCount++;
+                        }
+                        else if(TextCount==2)
+                        {
+                                playerMovement.enabled = false;
+                                iconPNJ.ClearCurrent();
+                                chatBubble.Show(ChatText3);
+                                
+                                TextCount++;
+                        }
+                        else if(TextCount==3)
+                        {
                                 playerMovement.enabled = true;
-                                TextCount = 0;
+                                iconPNJ.ClearCurrent();
+                                chatBubble.Hide();
+                                
+                                TextCount=0;
                         }
                 }
         }
