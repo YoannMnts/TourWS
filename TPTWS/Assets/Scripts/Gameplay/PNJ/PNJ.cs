@@ -10,7 +10,7 @@ namespace TPT.Gameplay.PNJ
         private bool isInRange = false;
         void Start()
         {
-            interact=GetComponent<InteractPNJ>();
+            interact = GetComponent<InteractPNJ>();
             isInRange = false;
             IconPNJ.Instance.ClearCurrent();
             player = GameObject.FindGameObjectWithTag("Player").transform;

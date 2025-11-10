@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 namespace TPT.Gameplay
 {
@@ -7,9 +8,12 @@ namespace TPT.Gameplay
         {
                 [SerializeField] private SpriteRenderer backGround;
                 [SerializeField]  private TextMeshPro textMeshp ;
-                 [SerializeField] private string texte;
+                  private string texte;
                  [SerializeField] private float Longeur = 7f;
                  [SerializeField] private float Hauteur = 5f;
+                 
+                 [SerializeField] private float typingSpeed = 0.03f;
+                 private Coroutine typingCoroutine;
 
                 private void Awake()
                 {
@@ -34,13 +38,30 @@ namespace TPT.Gameplay
                         backGround.size = textSize +  size;
                         
                 }
-                public void Show()
+                public void Show(string text)
                 {
                         gameObject.SetActive(true);
+                        if (typingCoroutine != null)
+                                StopCoroutine(typingCoroutine);
+
+                        typingCoroutine = StartCoroutine(TypeText(text));
                 }
                 public void Hide()
                 {
                         gameObject.SetActive(false);
+                }
+
+                private IEnumerator TypeText(string text)
+                {
+                        Setup(text);
+
+                        textMeshp.maxVisibleCharacters = 0;
+
+                        for (int i = 0; i <= text.Length; i++)
+                        {
+                                textMeshp.maxVisibleCharacters = i;
+                                yield return new WaitForSeconds(typingSpeed);
+                        }
                 }
         }
 }
