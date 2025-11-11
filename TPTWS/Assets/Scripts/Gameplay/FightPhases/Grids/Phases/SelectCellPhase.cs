@@ -49,7 +49,7 @@ namespace TPT.Gameplay.Grids.Phases
 
         Awaitable IPhase.End()
         {
-            ListPool<CellCoordinate>.Release(cells);
+            //ListPool<CellCoordinate>.Release(cells);
             return PhaseManager.CompletedPhase;
         }
 

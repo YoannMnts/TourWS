@@ -32,8 +32,7 @@ namespace TPT.Gameplay.Grids
 
         [SerializeField, HideInInspector]
         private FightGridManager manager;
-        
-        
+
 
         private void Reset()
         {
