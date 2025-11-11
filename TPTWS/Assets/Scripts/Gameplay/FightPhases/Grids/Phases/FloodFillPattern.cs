@@ -15,11 +15,11 @@ namespace TPT.Gameplay.FightPhases.Grids.Phases
             this.range = range;
         }
         
-        void ICellPattern.GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells)
+        void ICellPattern.GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells,List<CellCoordinate> heroesCells)
         {
             using (ListPool<Vector2Int>.Get(out var list))
             {
-                Flood(fightGrid, new Vector2Int(coordinate.x, coordinate.y), list, range);
+                Flood(fightGrid, new Vector2Int(coordinate.x, coordinate.y), list, range, heroesCells);
                 
                 foreach (Vector2Int coord in list)
                 {
@@ -32,29 +32,39 @@ namespace TPT.Gameplay.FightPhases.Grids.Phases
             }
         }
 
-        public void Flood(FightGrid fightGrid, Vector2Int from, List<Vector2Int> cells, int budget)
+        public void Flood(FightGrid fightGrid, Vector2Int from, List<Vector2Int> cells, int budget, List<CellCoordinate> heroesCells)
         {
             Vector2Int up = new Vector2Int(from.x, from.y + 1);
             Vector2Int down = new Vector2Int(from.x, from.y - 1);
             Vector2Int right = new Vector2Int(from.x + 1, from.y);
             Vector2Int left = new Vector2Int(from.x - 1, from.y);
             
-            CheckCell(fightGrid, from, cells, budget);
-            CheckCell(fightGrid, right, cells, budget);
-            CheckCell(fightGrid, left, cells, budget);
-            CheckCell(fightGrid,  up, cells, budget);
-            CheckCell(fightGrid, down, cells, budget);
+            CheckCell(fightGrid, from, cells, budget, heroesCells);
+            CheckCell(fightGrid, right, cells, budget, heroesCells);
+            CheckCell(fightGrid, left, cells, budget, heroesCells);
+            CheckCell(fightGrid,  up, cells, budget, heroesCells);
+            CheckCell(fightGrid, down, cells, budget, heroesCells);
             
             Debug.Log($"From {from} to {up} => {down} => {right} => {left}");
         }
 
-        private void CheckCell(FightGrid fightGrid,  Vector2Int cell, List<Vector2Int> cells, int budget)
+        private void CheckCell(FightGrid fightGrid,  Vector2Int cell, List<Vector2Int> cells, int budget, List<CellCoordinate> heroesCells)
         {
-            if (!cells.Contains(cell))
+            var currentCell = new CellCoordinate()
             {
-                cells.Add(cell);
-                if(budget > 0)
-                    Flood(fightGrid, cell, cells, budget - 1);
+                position = new Vector3(cell.x, 0, cell.y),
+                x = cell.x,
+                y = cell.y
+            };
+            if (!heroesCells.Contains(currentCell))
+            {
+                budget--;
+                if (!cells.Contains(cell))
+                {
+                    cells.Add(cell);
+                    if(budget > 0)
+                        Flood(fightGrid, cell, cells, budget - 1, heroesCells);
+                }
             }
         }
     }

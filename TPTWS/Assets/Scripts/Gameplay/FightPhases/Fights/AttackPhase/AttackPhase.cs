@@ -10,7 +10,7 @@ namespace TPT.Gameplay.FightPhases.Fights.AttackPhase
         protected IFightHero Hero => heroTurnPhase.hero;
         protected FightGrid Grid => heroTurnPhase.fightPhase.grid;
 
-        private readonly HeroTurnPhase heroTurnPhase;
+        public readonly HeroTurnPhase heroTurnPhase;
 
         public AttackPhase(HeroTurnPhase heroTurnPhase)
         {

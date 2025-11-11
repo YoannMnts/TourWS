@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Grids.Phases;
 using TPT.Gameplay.Fights;
@@ -18,15 +19,14 @@ namespace TPT.Gameplay.FightPhases.Fights.MovementPhase.Player
         protected override async Awaitable Execute()
         {
             FloodFillPattern pattern = new FloodFillPattern(Hero.MovementSpeed);
-            
+            List<CellCoordinate> heroesCells = heroTurnPhase.heroesCells;
             Debug.Log($"hero coordinates : {Hero.Coordinates.x}, {Hero.Coordinates.y}");
-            SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, pattern);
+            SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, pattern, heroesCells);
             
             await selectCellPhase.RunAsync();
 
             CellCoordinate targetCoordinates = selectCellPhase.SelectedCoordinate;
-            Debug.Log($"coordinates good ? : {selectCellPhase.Cells.Contains(targetCoordinates)}, target coordinates : {targetCoordinates.x}, {targetCoordinates.y}");
-            //tableau Cells pas bon
+            
             if (selectCellPhase.Cells.Contains(targetCoordinates))
             {
                 await Hero.MoveTo(targetCoordinates);
