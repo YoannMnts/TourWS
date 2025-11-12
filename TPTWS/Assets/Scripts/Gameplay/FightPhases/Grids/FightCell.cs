@@ -21,11 +21,13 @@ namespace TPT.Gameplay.Grids
         [SerializeField] 
         private MeshRenderer meshRenderer;
 
-        [SerializeField] private Color validCellColor;
-        [SerializeField] private Color notValidCellColor;
+        [SerializeField] 
+        private Color validCellColor;
+        [SerializeField] 
+        private Color notValidCellColor;
         
         private Color defaultCellColor;
-
+        
         private void Awake()
         {
             defaultCellColor = meshRenderer.material.color;

@@ -1,5 +1,5 @@
+using TPT.Core.Data;
 using UnityEngine;
-using  TPT.Core.Core.HeroData;
 
 namespace TPT.Gameplay.Level
 {

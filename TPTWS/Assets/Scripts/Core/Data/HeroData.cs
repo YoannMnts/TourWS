@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TPT.Core.Core.HeroData
+namespace TPT.Core.Data
 {
     [CreateAssetMenu(fileName = "Personnage", menuName = "TPT/Hero", order = 1)]
     public class HeroData : ScriptableObject
@@ -21,6 +21,6 @@ namespace TPT.Core.Core.HeroData
         public int Strength { get; private set; }
         
         [field: SerializeField]
-        public  SkillData.SkillData [] Skills { get; private set; }
+        public  SkillData [] Skills { get; private set; }
     }
 }

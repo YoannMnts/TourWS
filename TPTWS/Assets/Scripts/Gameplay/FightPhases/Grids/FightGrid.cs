@@ -29,9 +29,12 @@ namespace TPT.Gameplay.Grids
         
         private Dictionary<CellCoordinate, FightCell> cells;
         
-
         [SerializeField, HideInInspector]
         private FightGridManager manager;
+
+        public IEnumerable<CellCoordinate> CellCoordinates => cells.Keys;
+        
+        public Dictionary<IGridMember, CellCoordinate> Members { get; private set; }
 
 
         private void Reset()
@@ -42,6 +45,7 @@ namespace TPT.Gameplay.Grids
 
         private void Awake()
         {
+            Members = new ();
             //Degeu mais tant pis
             if(manager == null)
                 manager = FindFirstObjectByType<FightGridManager>();
@@ -58,7 +62,76 @@ namespace TPT.Gameplay.Grids
         {
             manager.RemoveGrid(this);
         }
-        
+
+        public Awaitable AddMember(IGridMember member)
+        {
+            if(member.Grid != this)
+                member.Grid?.RemoveMember(member);
+            
+            member.Grid = this;
+            FightCell cell = GetNearestCellCoord(member.transform.position);
+            Members.Add(member, cell.Coordinates);
+            
+            return member.MoveTo(cell.Coordinates);
+        }
+
+        public void RemoveMember(IGridMember member)
+        {
+            Members.Remove(member);
+        }
+
+        public Awaitable MoveMember(IGridMember gridMember, CellCoordinate cellCoordinate)
+        {
+            if (TryGetCell(cellCoordinate, out FightCell cell))
+            {
+                Members[gridMember] = cell.Coordinates;
+                return gridMember.MoveTo(cell.Coordinates);
+            }
+
+            return Awaitable.EndOfFrameAsync();
+        }
+        public Awaitable MoveMember(IGridMember gridMember, int x, int y)
+        {
+            if (TryGetCell(x, y, out FightCell cell))
+            {
+                Members[gridMember] = cell.Coordinates;
+                return gridMember.MoveTo(cell.Coordinates);
+            }
+
+            return Awaitable.EndOfFrameAsync();
+        }
+
+        public bool TryGetMember(int x, int y, out IGridMember member)
+        {
+            if(TryGetCell(x, y, out FightCell cell))
+                return TryGetMember(cell.Coordinates, out member);
+            
+            member = null;
+            return false;
+        }
+        public bool TryGetMember(CellCoordinate cellCoordinate, out IGridMember member)
+        {
+            foreach (var (gridMember, coord) in Members)
+            {
+                if (cellCoordinate.Equals(coord))
+                {
+                    member = gridMember;
+                    return true;
+                }
+            }
+            
+            member = null;
+            return false;
+        }
+        public bool TryGetMemberCoord(IGridMember member, out CellCoordinate cell) => Members.TryGetValue(member, out cell);
+        public bool TryGetMemberCell(IGridMember member, out FightCell cell)
+        {
+            if(Members.TryGetValue(member, out CellCoordinate coordinate) && cells.TryGetValue(coordinate, out cell))
+                return true;
+            
+            cell = null;
+            return false;
+        }
         
 #if UNITY_EDITOR
         private void OnDrawGizmos()

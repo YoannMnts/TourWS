@@ -1,5 +1,8 @@
-using UnityEngine;
+
+/*
+ using UnityEngine;
 using UnityEngine.InputSystem;
+
 namespace TPT.Gameplay.Player
 {
         public class ATTInteraction : MonoBehaviour
@@ -50,3 +53,4 @@ namespace TPT.Gameplay.Player
                 }
         }
 }
+*/

@@ -4,6 +4,7 @@ using TPT.Core.Phases;
 using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
+using TPT.Gameplay.Skills;
 using UnityEngine;
 
 namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
@@ -21,7 +22,6 @@ namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
 
         protected override async Awaitable Execute()
         {
-            SelectedFightSkill = Hero.Skills[0];
             while (SelectedFightSkill == null)
                 await Awaitable.NextFrameAsync();
             
@@ -43,7 +43,7 @@ namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
             }
         }
 
-        public void SelectAttack(IFightSkill fightSkill)
+        public void SelectSkill(IFightSkill fightSkill)
         {
             SelectedFightSkill = fightSkill;
         }

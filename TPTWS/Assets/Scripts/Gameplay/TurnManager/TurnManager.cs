@@ -1,6 +1,6 @@
+/*
 using System.Collections.Generic;
 using TPT.Gameplay.PNJ;
-using TPT.Core.Core.HeroData;
 using TPT.Gameplay.Player;
 using TPT.Gameplay.Player.GlueCode;
 using UnityEngine;
@@ -146,3 +146,4 @@ namespace TPT.Gameplay.TurnManager
                 }
         }
 }
+*/

@@ -1,8 +1,8 @@
 using TPT.Core;
-using TPT.Core.Core.HeroData;
-using TPT.Core.Core.HeroData.SkillData;
+using TPT.Core.Data;
 using UnityEngine;
 
+/*
 namespace TPT.Gameplay.Player.GlueCode
 {
     public class Unit : MonoBehaviour
@@ -31,19 +31,21 @@ namespace TPT.Gameplay.Player.GlueCode
          if (currentHP <= 0)
             Die(); 
       }
+      
       public void Die()
       {
          Debug.Log(data.Name + " est mort");
          TurnManager.TurnManager.Instance.RemoveUnit(this);
          Destroy(gameObject);
       }
+      
       // Appelée quand le joueur choisit Attaquer
       public void Attack(Unit target)
       {
          Debug.Log(name + " attaque " + target.name + " !");
          target.TakeDamage(skillData.Power);
       }
-       
+      
       // Exemple : une compétence spéciale
       public void EFF(Unit target)
       {
@@ -52,3 +54,4 @@ namespace TPT.Gameplay.Player.GlueCode
       }
     }
 }
+*/

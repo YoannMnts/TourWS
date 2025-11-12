@@ -15,6 +15,7 @@ namespace TPT.Gameplay.FightPhases.Fights
     {
         public readonly IFightHero hero;
         public readonly FightPhase fightPhase;
+        
         public readonly List<CellCoordinate> heroesCells = new List<CellCoordinate>();
 
         public HeroTurnPhase(IFightHero hero, FightPhase fightPhase)

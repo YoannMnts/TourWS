@@ -24,8 +24,12 @@ namespace TPT.Gameplay.Fights
             for (int i = 0; i < heroes.Length; i++)
             {
                 FightCell cell = grid.GetCellSpawn(heroes[i]);
-                var fightHero = heroes[i];
+                IFightHero fightHero = heroes[i];
+                
                 await fightHero.MoveTo(cell.Coordinates);
+                
+                await grid.AddMember(fightHero);
+                
             }
         }
 
@@ -62,7 +66,11 @@ namespace TPT.Gameplay.Fights
         
         Awaitable IPhase.End()
         {
+            for (int i = 0; i < heroes.Length; i++)
+                grid.RemoveMember(heroes[i]);
+            
             grid.DestroyCells();
+
             return PhaseManager.CompletedPhase;
         }
         

@@ -1,0 +1,31 @@
+﻿using System.Collections.Generic;
+using TPT.Gameplay.Grids;
+using TPT.Gameplay.Grids.Phases;
+
+namespace TPT.Gameplay.FightPhases.Grids.Patterns
+{
+    public class DirectionCellPattern : ICellPattern
+    {
+        protected readonly int range;
+
+        public DirectionCellPattern(int range  = 1)
+        {
+            this.range = range;
+        }
+
+        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells, List<CellCoordinate> heroesCells)
+        {
+            if (fightGrid.TryGetCell(coordinate.x, coordinate.y + range, out FightCell cell))
+                cells.Add(cell.Coordinates);
+            
+            if (fightGrid.TryGetCell(coordinate.x, coordinate.y - range, out cell))
+                cells.Add(cell.Coordinates);
+            
+            if (fightGrid.TryGetCell(coordinate.x + range, coordinate.y, out cell))
+                cells.Add(cell.Coordinates);
+            
+            if (fightGrid.TryGetCell(coordinate.x - range, coordinate.y, out cell))
+                cells.Add(cell.Coordinates);
+        }
+    }
+}

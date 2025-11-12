@@ -29,7 +29,7 @@ namespace TPT.Gameplay.FightPhases.Fights.MovementPhase.Player
             
             if (selectCellPhase.Cells.Contains(targetCoordinates))
             {
-                await Hero.MoveTo(targetCoordinates);
+                await Hero.Grid.MoveMember(Hero, targetCoordinates);
             }
         }
     }
