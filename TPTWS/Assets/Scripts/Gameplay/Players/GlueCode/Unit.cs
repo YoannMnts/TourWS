@@ -1,5 +1,6 @@
 using TPT.Core;
 using TPT.Core.Core.HeroData;
+using TPT.Core.Core.HeroData.SkillData;
 using UnityEngine;
 
 namespace TPT.Gameplay.Player.GlueCode
@@ -7,6 +8,9 @@ namespace TPT.Gameplay.Player.GlueCode
     public class Unit : MonoBehaviour
     {
       public HeroData data;
+      public SkillData skillData;
+      public SkillData skillDataSpecial;
+
       private int currentHP;
 
       private void Start()
@@ -21,7 +25,8 @@ namespace TPT.Gameplay.Player.GlueCode
          currentHP -= amount;
          currentHP = Mathf.Max(currentHP, 0);
 
-         Debug.Log(name + " prend " + amount + " dégâts. HP = " + currentHP + "/" + data.MaxHealth);
+         Debug.Log(name + " prend " + amount + " dégâts.");
+         Debug.Log(name +" il te reste "+ currentHP+" HP");
 
          if (currentHP <= 0)
             Die(); 
@@ -31,6 +36,19 @@ namespace TPT.Gameplay.Player.GlueCode
          Debug.Log(data.Name + " est mort");
          TurnManager.TurnManager.Instance.RemoveUnit(this);
          Destroy(gameObject);
+      }
+      // Appelée quand le joueur choisit Attaquer
+      public void Attack(Unit target)
+      {
+         Debug.Log(name + " attaque " + target.name + " !");
+         target.TakeDamage(skillData.Power);
+      }
+       
+      // Exemple : une compétence spéciale
+      public void EFF(Unit target)
+      {
+         Debug.Log(name + " utilise une compétence sur " + target.name + " !");
+         target.TakeDamage(skillDataSpecial.Power);
       }
     }
 }
