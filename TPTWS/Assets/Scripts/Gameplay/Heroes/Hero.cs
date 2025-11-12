@@ -1,154 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
-using TPT.Core.Data.Heroes;
-using TPT.Core.Data.Skills;
-using TPT.Gameplay.Heroes.Animations;
-using TPT.Gameplay.Heroes.Skills;
-using TPT.Gameplay.Level;
-using TPT.Gameplay.Player;
+using TPT.Core.Core.Data.Heroes;
+using TPT.Gameplay.Fights;
+using TPT.Gameplay.Fights.Attack;
+using TPT.Gameplay.Grids;
+using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TPT.Gameplay.Heroes
 {
-    public partial class Hero : MonoBehaviour
+    public abstract class Hero : MonoBehaviour, IFightHero
     {
-        #region Events
-        public event Action OnTurnStarted;
-        public event Action OnTurnEnded;
-        public event Action OnHeroDied;
-        public event Action<Hero> OnHeroSpawn;
-        public event Action<Hero> OnHeroDespawn;
-        public event Action<ISkill> OnSkillAdded;
+        
+        protected class DebugSkill : IFightSkill
+        {
+            public async Awaitable Perform(IFightHero hero, FightGrid grid, CellCoordinate cellCoordinate)
+            {
+                Debug.Log("Debug attack");
+                await Awaitable.WaitForSecondsAsync(1);
+            }
 
-        public event Action<ISkill> OnSkillRemoved;
-        public event Action<int, Hero> OnHealthChanged;
-
-        #endregion
-
-        public int MaxHealth => Data.MaxHealth;
-        public int MaxMana => Data.MaxMana;
-        public HeroData Data { get; private set; }
-        public int CurrentHealth { get; private set; }
-        public int CurrentMana { get; private set; }
-        public int CurrentSpeed { get; private set; }
-
-        public int CurrentStrength { get; private set; }
-        public int CurrentTurnPoints => LevelManager.Instance.GetPointsFor(this);
-
-        public bool IsPlaying => LevelManager.Instance.CurrentHero == this;
-        public bool IsAlive => CurrentHealth != 0;
-
-        public Transform SpawnPoint { get; private set; }
-        public PlayerController Player { get; private set; }
-        public IEnumerable<ISkill> Skills => skills;
-
-        private List<ISkill> skills = new();
+            public bool GetPattern(out ICellPattern pattern)
+            {
+                pattern = null;
+                return false;
+            }
+        }
 
         [field: SerializeField]
-        public HeroAnimatorController HeroAnimator { get; private set; }
+        public int MovementSpeed { get; private set; } = 2;
+        
+        [field: SerializeField]
+        public int Speed { get; private set; } = 1;
+        
+        public int CurrentAttack { get; private set; }
 
-
-        public void ProcessSpawn(HeroData data, PlayerController player, Transform spawn)
+        public int CurrentHealth { get; private set; } = 100;
+        
+        [field: SerializeField]
+        public HeroData HeroData { get; private set; }
+        
+        [field: SerializeField]
+        public List<IFightSkill> skills = new List<IFightSkill>()
         {
-            Data = data;
-            Player = player;
-            SpawnPoint = spawn;
+            new DebugSkill(),
+        };
+        
+        public abstract bool IsPlayerHero { get; }
+        public bool IsAlive => CurrentHealth > 0;
+        public CellCoordinate Coordinates { get; private set; }
+        IReadOnlyList<IFightSkill> IFightHero.Skills => skills.AsReadOnly();
 
-            CurrentHealth = data.MaxHealth;
-            CurrentMana = data.MaxMana;
-            CurrentSpeed = data.Speed;
-
-            transform.SetParent(spawn);
-            transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-            skills ??= new List<ISkill>(data.SkillsData.Length);
-            skills.Clear();
-
-            for (int i = 0; i < data.SkillsData.Length; i++)
-            {
-                SkillData skillData = data.SkillsData[i];
-                if (skillData.TryCreateGetSkillForData(out ISkill skill))
-                    AddSkill(skill);
-            }
-
-            OnHeroSpawn?.Invoke(this);
+        public async Awaitable OnTurnBegin()
+        {
+            Debug.Log($"Starting turn for {name}", gameObject);
+            await Awaitable.WaitForSecondsAsync(.2f);
         }
 
-        private void AddSkill(ISkill skill)
+        public async Awaitable OnTurnEnd()
         {
-            if(skills.Contains(skill))
-                return;
-
-            skills.Add(skill);
-            OnSkillAdded?.Invoke(skill);
+            Debug.Log($"Ending turn for {name}", gameObject);
+            await Awaitable.WaitForSecondsAsync(.2f);
         }
 
-        private bool RemoveSkill(ISkill skill)
+        public async Awaitable MoveTo(CellCoordinate targetCoordinates)
         {
-            if (skills.Remove(skill))
-            {
-                OnSkillRemoved?.Invoke(skill);
-                return true;
-            }
-
-            return false;
+            Coordinates = targetCoordinates;
+            
+            await transform.DOMove(Coordinates.position, .5f)
+                .SetEase(Ease.OutQuint)
+                .AsyncWaitForCompletion();
         }
 
-        public void ProcessDespawn()
+        int IComparable<IFightHero>.CompareTo(IFightHero other)
         {
-            Player = null;
-            Data = null;
-
-            OnHeroDespawn?.Invoke(this);
+            return Speed.CompareTo(other.Speed);
         }
-
-        public void BeginTurn()
-        {
-            OnTurnStarted?.Invoke();
-        }
-
-        public void EndTurn()
-        {
-            OnTurnEnded?.Invoke();
-        }
-
-        public void AddOrRemoveHealth(int health)
-        {
-            //La vie avant de prendre le coup
-            int lastHealth = CurrentHealth;
-
-            CurrentHealth += health;
-            if (CurrentHealth > MaxHealth)
-                CurrentHealth = MaxHealth;
-            if (CurrentHealth < 0)
-                CurrentHealth = 0;
-
-            OnHealthChanged?.Invoke(lastHealth, this);
-
-            if (CurrentHealth == 0 && lastHealth != 0)
-            {
-                Die();
-            }
-        }
-
-        public void Die()
-        {
-            CurrentHealth = 0;
-
-            OnHeroDied?.Invoke();
-        }
-
-        public void AddOrRemoveMana(int mana)
-        {
-            CurrentMana += mana;
-            if (CurrentMana > MaxMana)
-                CurrentMana = MaxMana;
-            if (CurrentMana < 0)
-                CurrentMana = 0;
-        }
-
-
-        public int GetSpeedForTurn(uint turn) => CurrentSpeed;
     }
 }
