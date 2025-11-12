@@ -31,7 +31,7 @@ namespace TPT.Gameplay.Player
                                 direction = Vector3.left;
                         else if (Input.GetKey(KeyCode.D))
                                 direction = Vector3.right;
-
+                        
                         // Si une touche directionnelle est pressée
                         if (direction != Vector3.zero)
                         {
