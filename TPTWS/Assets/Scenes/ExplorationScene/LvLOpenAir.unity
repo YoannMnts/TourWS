@@ -184,6 +184,10 @@ PrefabInstance:
       value: Levier_1
       objectReference: {fileID: 0}
     - target: {fileID: 7729728030123972020, guid: 68635672f80326642bfec860ca7dc27d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729728030123972020, guid: 68635672f80326642bfec860ca7dc27d, type: 3}
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
@@ -246,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1065,6 +1073,10 @@ PrefabInstance:
     - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
       propertyPath: m_Name
       value: Player (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2212,7 +2224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bd4d6dacc8e5e444caea2684a978a20a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3502,6 +3514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gobelin
       objectReference: {fileID: 0}
+    - target: {fileID: 4491006666159651708, guid: 1cf64c414e36e684987089d9083117a9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9181697128269456312, guid: 1cf64c414e36e684987089d9083117a9, type: 3}
       propertyPath: data
       value: 
@@ -3510,6 +3526,14 @@ PrefabInstance:
       propertyPath: currentHP
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9181697128269456312, guid: 1cf64c414e36e684987089d9083117a9, type: 3}
+      propertyPath: skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 89eac3895434bce439e507769fd78a3b, type: 2}
+    - target: {fileID: 9181697128269456312, guid: 1cf64c414e36e684987089d9083117a9, type: 3}
+      propertyPath: skillDataSpecial
+      value: 
+      objectReference: {fileID: 11400000, guid: 89eac3895434bce439e507769fd78a3b, type: 2}
     m_RemovedComponents:
     - {fileID: 5819928021108255933, guid: 1cf64c414e36e684987089d9083117a9, type: 3}
     m_RemovedGameObjects: []
@@ -3581,6 +3605,10 @@ PrefabInstance:
       value: Levier
       objectReference: {fileID: 0}
     - target: {fileID: 7729728030123972020, guid: 68635672f80326642bfec860ca7dc27d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729728030123972020, guid: 68635672f80326642bfec860ca7dc27d, type: 3}
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
@@ -3643,6 +3671,10 @@ PrefabInstance:
     - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 878805989657299525, guid: 78a6a00ad0c594c48beb9d9184aa33bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,9 +1,9 @@
 ﻿using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights;
+using TPT.Gameplay.Fights;
 using TPT.Gameplay.Grids;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights
+namespace TPT.Gameplay.FightPhases.Fights
 {
     public class FightPhase : IPhase
     {

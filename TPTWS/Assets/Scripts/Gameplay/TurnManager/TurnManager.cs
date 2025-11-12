@@ -19,6 +19,7 @@ namespace TPT.Gameplay.TurnManager
                 private int enemyIndex = 0;
                 private bool heroTurn = true;
                 private bool battleEnded = false;
+                private bool  enemyActing = false;
                 public int HeroIndex => heroIndex;
                 public int EnemyIndex => enemyIndex;
                 private PlayerInput playerInput;
@@ -64,16 +65,33 @@ namespace TPT.Gameplay.TurnManager
                 void EnemyTurn()
                 {
                         Unit currentEnemy = enemies[enemyIndex];
-
+                        Unit target =  heroes[heroIndex];
                         // Exemple : si Space = joue son tour
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-
                                 Debug.Log(currentEnemy.name + " joue !");
+                                StartCoroutine(EnemyAttackRoutine());
                                 
-                                
+                        }
+
+                        IEnumerator EnemyAttackRoutine()
+                        {
+                                Unit currentEnemy = enemies[enemyIndex];
+                                Unit target = heroes[heroIndex];
+
+                                Debug.Log(currentEnemy.name + " prépare une attaque...");
+                                yield return new WaitForSeconds(1.5f); 
+
+                                if (currentEnemy != null && target != null)
+                                {
+                                        Debug.Log(currentEnemy.name + " attaque " + target.name);
+                                        currentEnemy.Attack(target);
+                                }
+
+                                yield return new WaitForSeconds(0.5f);
 
                                 NextEnemy();
+                                enemyActing = false;
                         }
 
                 }
