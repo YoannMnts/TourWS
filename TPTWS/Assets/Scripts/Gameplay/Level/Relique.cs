@@ -38,9 +38,6 @@ namespace TPT.Gameplay.Level
         {
             
         }
-        private void ()
-        {
-            
-        }
+        
     }
 }
