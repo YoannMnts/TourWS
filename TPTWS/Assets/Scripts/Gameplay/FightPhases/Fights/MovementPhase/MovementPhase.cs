@@ -1,17 +1,19 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights;
 using TPT.Gameplay.Grids;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights.Attack
+namespace TPT.Gameplay.Fights.MovementPhase
 {
-    public abstract class AttackPhase : IPhase
+    public abstract class MovementPhase : IPhase
     {
         protected IFightHero Hero => heroTurnPhase.hero;
+        
         protected FightGrid Grid => heroTurnPhase.fightPhase.grid;
+        
+        protected readonly HeroTurnPhase heroTurnPhase;
 
-        private readonly HeroTurnPhase heroTurnPhase;
-
-        public AttackPhase(HeroTurnPhase heroTurnPhase)
+        public MovementPhase(HeroTurnPhase heroTurnPhase)
         {
             this.heroTurnPhase = heroTurnPhase;
         }
@@ -30,7 +32,7 @@ namespace TPT.Gameplay.Fights.Attack
         {
             return PhaseManager.CompletedPhase;
         }
-
+        
         protected abstract Awaitable Execute();
     }
 }

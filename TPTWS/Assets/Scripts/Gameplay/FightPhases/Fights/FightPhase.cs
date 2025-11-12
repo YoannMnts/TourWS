@@ -1,4 +1,5 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights;
 using TPT.Gameplay.Grids;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace TPT.Gameplay.Fights
             grid.GenerateCells();
             for (int i = 0; i < heroes.Length; i++)
             {
-                FightCell cell = grid.GetNearestCellCoord(heroes[i].transform.position);
+                FightCell cell = grid.GetCellSpawn(heroes[i]);
                 var fightHero = heroes[i];
                 await fightHero.MoveTo(cell.Coordinates);
             }
@@ -58,7 +59,13 @@ namespace TPT.Gameplay.Fights
                 }
             }
         }
-
+        
+        Awaitable IPhase.End()
+        {
+            grid.DestroyCells();
+            return PhaseManager.CompletedPhase;
+        }
+        
         private bool IsFightFinished()
         {
             bool playerTeamIsDead = true;
@@ -73,12 +80,6 @@ namespace TPT.Gameplay.Fights
                 
             }
             return playerTeamIsDead || enemiesTeamIsDead;
-        }
-
-        Awaitable IPhase.End()
-        {
-            grid.DestroyCells();
-            return PhaseManager.CompletedPhase;
         }
     }
 }

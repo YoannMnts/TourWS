@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using TPT.Gameplay.Fights;
+using TPT.Gameplay.Heroes;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -21,16 +23,16 @@ namespace TPT.Gameplay.Grids
 
         [field: SerializeField] 
         public EnemySpawnPoints[] Enemies { get; private set; }
+        
         [field: SerializeField] 
-        public Transform[] PlayerSpawnPoints { get; private set; }
+        public PlayerSpawnPoint[] PlayerHero { get; private set; }
         
         private Dictionary<CellCoordinate, FightCell> cells;
         
 
         [SerializeField, HideInInspector]
         private FightGridManager manager;
-        
-        
+
 
         private void Reset()
         {
@@ -176,5 +178,20 @@ namespace TPT.Gameplay.Grids
             cells.Clear();
         }
 
+        
+        public FightCell GetCellSpawn(IFightHero fightHero)
+        {
+            for (int i = 0; i < Enemies.Length; i++)
+            {
+                if ((IFightHero)Enemies[i].Enemy == fightHero)
+                    return GetNearestCellCoord(Enemies[i].SpawnPoint.position);
+            }
+            for (int j = 0; j < PlayerHero.Length; j++)
+            {
+                if ((IFightHero)PlayerHero[j].PlayerHero == fightHero)
+                    return GetNearestCellCoord(PlayerHero[j].SpawnPoint.position);
+            }
+            return null;
+        }
     }
 }

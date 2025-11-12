@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework.Internal;
 using TPT.Core.Phases;
 using TPT.Gameplay.Fights;
 using TPT.Gameplay.Grids;
@@ -21,7 +22,6 @@ namespace Debug
         {
             using (ListPool<IFightHero>.Get(out var list))
             {
-                
                 for (int i = 0; i < grid.Enemies.Length; i++)
                 {
                     EnemySpawnPoints spawnPoints = grid.Enemies[i];

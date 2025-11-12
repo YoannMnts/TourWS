@@ -10,6 +10,7 @@ namespace TPT.Gameplay.Grids.Phases
         private readonly CellCoordinate startCoordinate;
         public readonly FightGrid grid;
         public readonly ICellPattern pattern;
+        public readonly List<CellCoordinate> heroesCells;
         private List<CellCoordinate> cells;
 
         public bool HasSelected { get; private set;}
@@ -17,11 +18,12 @@ namespace TPT.Gameplay.Grids.Phases
         
         public IReadOnlyList<CellCoordinate> Cells => cells.AsReadOnly();
         
-        public SelectCellPhase(CellCoordinate startCoordinate, FightGrid grid, ICellPattern pattern)
+        public SelectCellPhase(CellCoordinate startCoordinate, FightGrid grid, ICellPattern pattern, List<CellCoordinate> heroesCells)
         {
             this.startCoordinate = startCoordinate;
             this.grid = grid;
             this.pattern = pattern;
+            this.heroesCells = heroesCells;
             HasSelected = false;
         }
 
@@ -34,7 +36,7 @@ namespace TPT.Gameplay.Grids.Phases
         Awaitable IPhase.Begin()
         {
             ListPool<CellCoordinate>.Get(out cells);
-            pattern.GetCells(grid, startCoordinate, cells);
+            pattern.GetCells(grid, startCoordinate, cells, heroesCells);
             
             return PhaseManager.CompletedPhase;
         }
@@ -49,7 +51,7 @@ namespace TPT.Gameplay.Grids.Phases
 
         Awaitable IPhase.End()
         {
-            ListPool<CellCoordinate>.Release(cells);
+            //ListPool<CellCoordinate>.Release(cells);
             return PhaseManager.CompletedPhase;
         }
 

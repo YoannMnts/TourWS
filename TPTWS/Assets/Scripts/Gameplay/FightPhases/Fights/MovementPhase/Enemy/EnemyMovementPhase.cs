@@ -1,4 +1,5 @@
 ﻿using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Fights;
 using UnityEngine;
 
 namespace TPT.Gameplay.Fights.MovementPhase
@@ -12,6 +13,7 @@ namespace TPT.Gameplay.Fights.MovementPhase
 
         protected override Awaitable Execute()
         {
+            Debug.Log($"{heroTurnPhase.hero} want to move");
             return PhaseManager.CompletedPhase;
         }
     }

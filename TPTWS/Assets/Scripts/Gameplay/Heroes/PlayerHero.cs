@@ -1,4 +1,5 @@
-﻿using TPT.Gameplay.Fights;
+﻿using System;
+using TPT.Gameplay.Fights;
 
 namespace TPT.Gameplay.Heroes
 {
