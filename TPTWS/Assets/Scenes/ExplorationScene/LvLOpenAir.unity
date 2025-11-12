@@ -928,8 +928,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.ChatBubble
   backGround: {fileID: 1819019577}
   textMeshp: {fileID: 1498832123}
-  Longeur: 10
-  Hauteur: 5
+  Longeur: 3
+  Hauteur: 7
   typingSpeed: 0.03
 --- !u!4 &344558836
 Transform:
@@ -1178,6 +1178,7 @@ GameObject:
   - component: {fileID: 1047357556}
   - component: {fileID: 1047357555}
   - component: {fileID: 1047357558}
+  - component: {fileID: 1047357559}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1224,8 +1225,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0
+  far clip plane: 50
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -1253,7 +1254,7 @@ Transform:
   m_GameObject: {fileID: 1047357554}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 3.4610002, y: 5.08, z: -8.19}
+  m_LocalPosition: {x: 4.4, y: 5.9, z: -9.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1288,7 +1289,7 @@ MonoBehaviour:
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
-  m_AllowXRRendering: 1
+  m_AllowXRRendering: 0
   m_AllowHDROutput: 1
   m_UseScreenCoordOverride: 0
   m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1303,6 +1304,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1047357559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047357554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0470ee4feec8b7845b97631d364cb9e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.CameraTarget
+  player: {fileID: 1106017718}
+  followSpeed: 3.5
 --- !u!1 &1095449174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Level.DoorMove
   startHeight: 2
-  loweredHeight: 6
+  loweredHeight: 5
   moveSpeed: 1
 --- !u!65 &1095449176
 BoxCollider:
@@ -1732,7 +1747,7 @@ GameObject:
   - component: {fileID: 1121914189}
   - component: {fileID: 1121914188}
   m_Layer: 0
-  m_Name: Cube_1
+  m_Name: Hero1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1881,7 +1896,7 @@ GameObject:
   - component: {fileID: 1208359960}
   - component: {fileID: 1208359959}
   m_Layer: 0
-  m_Name: Cube_2
+  m_Name: hero2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3262,8 +3277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.ChatBubble
   backGround: {fileID: 342128898}
   textMeshp: {fileID: 1828477711}
-  Longeur: 10
-  Hauteur: 5
+  Longeur: 3
+  Hauteur: 7
   typingSpeed: 0.03
 --- !u!1 &2046003170
 GameObject:

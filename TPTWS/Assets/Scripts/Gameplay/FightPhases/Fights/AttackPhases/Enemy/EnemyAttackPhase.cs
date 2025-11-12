@@ -13,6 +13,7 @@ namespace TPT.Gameplay.FightPhases.Fights.AttackPhases.Enemy
 
         protected override async Awaitable Execute()
         {
+            Debug.Log($"{heroTurnPhase.hero} want ATTACK");
             IReadOnlyList<IFightSkill> attacks = Hero.Skills;
             
             int rnd = Random.Range(0, attacks.Count);

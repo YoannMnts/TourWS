@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Fights.AttackPhases;
 using TPT.Gameplay.FightPhases.Fights.AttackPhases.Enemy;
