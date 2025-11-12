@@ -96,7 +96,7 @@ namespace TPT.Gameplay.Grids
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            if (currentSelectPhase != null)
+            if (currentSelectPhase != null && currentSelectPhase.Cells.Contains(Coordinates))
             {
                 currentSelectPhase.SelectCell(Coordinates);
                 transform.DOKill();
