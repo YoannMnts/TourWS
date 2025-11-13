@@ -18,4 +18,5 @@ MonoBehaviour:
   <Strength>k__BackingField: 20
   <MovementRange>k__BackingField: 2
   <Speed>k__BackingField: 2
-  <Skills>k__BackingField: []
+  <Skills>k__BackingField:
+  - {fileID: 11400000, guid: 4da8f66b276d519469b8c25e349166bf, type: 2}

@@ -32,6 +32,7 @@ namespace Debug
                     list.Add(playerHeroes[i]);
 
                 list.Sort();
+                list.Reverse();
                 FightPhase fightPhase = new FightPhase(list.ToArray(), grid);
 
                 fightPhase.Run();
