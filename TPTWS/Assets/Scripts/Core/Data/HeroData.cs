@@ -16,6 +16,9 @@ namespace TPT.Core.Data
         
         [field: SerializeField]
         public int Speed { get; private set; }
+        
+        [field: SerializeField]
+        public int MovementRange { get; private set; }
 
         [field: SerializeField]
         public int Strength { get; private set; }

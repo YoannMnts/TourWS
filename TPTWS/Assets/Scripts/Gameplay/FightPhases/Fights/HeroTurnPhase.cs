@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights.AttackPhase.Player;
+using TPT.Gameplay.FightPhases.Fights.AttackPhases;
+using TPT.Gameplay.FightPhases.Fights.AttackPhases.Enemy;
+using TPT.Gameplay.FightPhases.Fights.AttackPhases.Player;
 using TPT.Gameplay.FightPhases.Fights.MovementPhase.Player;
 using TPT.Gameplay.Fights;
-using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Fights.MovementPhase;
 using TPT.Gameplay.Grids;
 using UnityEngine;
@@ -36,17 +37,27 @@ namespace TPT.Gameplay.FightPhases.Fights
 
         async Awaitable IPhase.Execute()
         {
-            Gameplay.Fights.MovementPhase.MovementPhase movementPhase = hero.IsPlayerHero ? 
-                new PlayerMovementPhase(this) :
-                new EnemyMovementPhase(this);
+            if (hero.IsPlayerHero)
+            {
+                var playerMovementPhase = new PlayerMovementPhase(this);
+                await playerMovementPhase.RunAsync();
+            }
+            else
+            {
+                var enemyMovementPhase = new EnemyMovementPhase(this);
+                await enemyMovementPhase.RunAsync();
+            }
             
-            await movementPhase.RunAsync();
-            
-            AttackPhase.AttackPhase attackPhase = hero.IsPlayerHero ? 
-                new PlayerAttackPhase(this) :
-                new EnemyAttackPhase(this);
-            
-            await attackPhase.RunAsync();
+            if (hero.IsPlayerHero)
+            {
+                var playerAttackPhase = new PlayerAttackPhase(this);
+                await playerAttackPhase.RunAsync();
+            }
+            else
+            {
+                var enemyAttackPhase = new EnemyAttackPhase(this);
+                await enemyAttackPhase.RunAsync();
+            }
         }
 
         async Awaitable IPhase.End()

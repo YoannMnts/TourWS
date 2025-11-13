@@ -3,7 +3,7 @@ using TPT.Gameplay.Fights;
 using TPT.Gameplay.Grids;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.AttackPhase
+namespace TPT.Gameplay.FightPhases.Fights.AttackPhases
 {
     public abstract class AttackPhase : IPhase
     {

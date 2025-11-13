@@ -1,12 +1,8 @@
 ﻿using System.Collections.Generic;
-using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights;
-using TPT.Gameplay.FightPhases.Fights.AttackPhase;
 using TPT.Gameplay.Skills;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights.Attack
+namespace TPT.Gameplay.FightPhases.Fights.AttackPhases.Enemy
 {
     public class EnemyAttackPhase : AttackPhase
     {

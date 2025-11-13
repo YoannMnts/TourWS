@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using TPT.Core.Phases;
-using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
+namespace TPT.Gameplay.FightPhases.Fights.AttackPhases.Player
 {
     public class PlayerAttackPhase : AttackPhase
     {
@@ -29,8 +27,7 @@ namespace TPT.Gameplay.FightPhases.Fights.AttackPhase.Player
 
             if (SelectedFightSkill.GetPattern(out ICellPattern attackPattern))
             { 
-                List<CellCoordinate> heroesCells = heroTurnPhase.heroesCells;
-                SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, attackPattern, heroesCells);
+                SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, attackPattern);
 
                 await selectCellPhase.RunAsync();
                 CellCoordinate target = selectCellPhase.SelectedCoordinate;

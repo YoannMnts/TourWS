@@ -21,7 +21,7 @@ namespace TPT.Gameplay.FightPhases.Fights.MovementPhase.Player
             FloodFillPattern pattern = new FloodFillPattern(Hero.MovementSpeed);
             List<CellCoordinate> heroesCells = heroTurnPhase.heroesCells;
             Debug.Log($"hero coordinates : {Hero.Coordinates.x}, {Hero.Coordinates.y}");
-            SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, pattern, heroesCells);
+            SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, pattern);
             
             await selectCellPhase.RunAsync();
 

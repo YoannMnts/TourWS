@@ -1,7 +1,7 @@
 ﻿using System;
 using DG.Tweening;
 using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights.AttackPhase.Player;
+using TPT.Gameplay.FightPhases.Fights.AttackPhases.Player;
 using TPT.Gameplay.Fights;
 using TPT.Gameplay.Skills;
 using UnityEngine;
@@ -39,6 +39,7 @@ namespace TPT.Gameplay.FightPhases.Fights.UI
         }
         public void OnPhaseBegin(PlayerAttackPhase phase)
         {
+            Debug.Log("AAAAA");
             group.DOFade(1, 0.2f);
             group.blocksRaycasts = true;
             group.interactable = true;

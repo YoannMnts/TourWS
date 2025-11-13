@@ -248,11 +248,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1772127840312993074, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
   m_PrefabInstance: {fileID: 3399951003483435323}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &362533262 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2099059640195388701, guid: 8e61be0adea465a4abae53639457db88, type: 3}
-  m_PrefabInstance: {fileID: 5142932851826466031}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &362533263 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2677132812494687412, guid: 8e61be0adea465a4abae53639457db88, type: 3}
@@ -435,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d63dc90aa24b8ab33b2451a49d6b18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.FightPhases.Fights.UI.PlayerAttackPhaseUI
-  skillUIPrefab: {fileID: 362533262}
+  skillUIPrefab: {fileID: 2099059640195388701, guid: 8e61be0adea465a4abae53639457db88, type: 3}
   skillRoot: {fileID: 364333847}
   group: {fileID: 1469829135}
 --- !u!4 &1851354623 stripped
@@ -465,19 +460,19 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
     - target: {fileID: 1442974489488422032, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.74
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 1442974489488422032, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.82
+      value: -0.84
       objectReference: {fileID: 0}
     - target: {fileID: 1772127840312993074, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.93
+      value: -4.18
       objectReference: {fileID: 0}
     - target: {fileID: 1772127840312993074, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.56
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,19 +524,19 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
     - target: {fileID: 3460418220786459357, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.84
+      value: -0.46
       objectReference: {fileID: 0}
     - target: {fileID: 3460418220786459357, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.94
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 3985437368144253216, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.39
+      value: -3.94
       objectReference: {fileID: 0}
     - target: {fileID: 3985437368144253216, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.19
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: 4547157902184039779, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: <HeroData>k__BackingField
@@ -565,11 +560,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
     - target: {fileID: 6931424114862116078, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.63
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6931424114862116078, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.58
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 7243902709624041985, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_Name
@@ -578,6 +573,14 @@ PrefabInstance:
     - target: {fileID: 7262500495053844560, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: m_Name
       value: EnemyHero_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548005598127595302, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548005598127595302, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: floodFillDebugTransform
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8548005598127595302, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
       propertyPath: <PlayerHero>k__BackingField.Array.size

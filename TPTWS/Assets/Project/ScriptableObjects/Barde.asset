@@ -15,7 +15,8 @@ MonoBehaviour:
   <Name>k__BackingField: Barde
   <Description>k__BackingField: 
   <MaxHealth>k__BackingField: 160
-  <Speed>k__BackingField: 2
+  <Speed>k__BackingField: 3
+  <MovementRange>k__BackingField: 3
   <Strength>k__BackingField: 20
   <Skills>k__BackingField:
   - {fileID: 11400000, guid: aa2e256ecdfc91949a89b1d9280c0a1a, type: 2}

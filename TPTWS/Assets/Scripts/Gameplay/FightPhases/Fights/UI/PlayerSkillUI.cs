@@ -18,6 +18,7 @@ namespace TPT.Gameplay.FightPhases.Fights.UI
         public void Initialize(PlayerAttackPhaseUI phaseUI, IFightSkill skill)
         {
             Current = skill;
+            playerAttackPhaseUI = phaseUI;
             
             skillName.text = skill.SkillData.Name;
             skillDescription.text = skill.SkillData.Description;

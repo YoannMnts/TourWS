@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using TPT.Gameplay.Fights;
+using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Heroes;
 using UnityEngine;
 using UnityEngine.Pool;
 
 #if UNITY_EDITOR
+using TPT.Gameplay.FightPhases.Grids.Phases;
 using UnityEditor;
 #endif
 
@@ -133,22 +135,6 @@ namespace TPT.Gameplay.Grids
             return false;
         }
         
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            using (ListPool<CellCoordinate>.Get(out var list))
-            {
-                GetCells(list);
-                foreach (var cellCoordinate in list)
-                {
-                    Vector3 vector3 = new Vector3(manager.CellSize, .2f, manager.CellSize);
-                    Gizmos.DrawWireCube(cellCoordinate.position, vector3);
-                    
-                    Handles.Label(cellCoordinate.position, $"{cellCoordinate.x} : {cellCoordinate.y}");
-                }
-            }
-        }
-#endif
         private void GetCells(List<CellCoordinate> coordinates)
         {
             Bounds bounds = zone.bounds;
@@ -266,5 +252,23 @@ namespace TPT.Gameplay.Grids
             }
             return null;
         }
+        
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            using (ListPool<CellCoordinate>.Get(out var list))
+            {
+                GetCells(list);
+                foreach (var cellCoordinate in list)
+                {
+                    Vector3 vector3 = new Vector3(manager.CellSize, .2f, manager.CellSize);
+                    Gizmos.DrawWireCube(cellCoordinate.position, vector3 * .9f);
+                    
+                    Handles.Label(cellCoordinate.position, $"{cellCoordinate.x} : {cellCoordinate.y}");
+                }
+            }
+        }
+#endif
     }
 }

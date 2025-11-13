@@ -6,11 +6,10 @@ namespace TPT.Gameplay.FightPhases.Grids.Phases
 {
     public class AllCellsPattern : ICellPattern
     {
-        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells, List<CellCoordinate> heroesCells)
+        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells)
         {
             foreach (var cellCoordinate in fightGrid.CellCoordinates)
                 cells.Add(cellCoordinate);
-            
         }
     }
 }

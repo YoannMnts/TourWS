@@ -16,6 +16,9 @@ namespace TPT.Gameplay.Grids
             this.y = y;
             this.position = position;
         }
+        
+        public static implicit operator Vector2Int(CellCoordinate coordinate)
+            => new Vector2Int(coordinate.x, coordinate.y);
 
         public bool Equals(CellCoordinate other)
         {

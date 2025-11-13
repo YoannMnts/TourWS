@@ -13,7 +13,7 @@ namespace TPT.Gameplay.FightPhases.Grids.Patterns
             this.range = range;
         }
 
-        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells, List<CellCoordinate> heroesCells)
+        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells)
         {
             if (fightGrid.TryGetCell(coordinate.x, coordinate.y + range, out FightCell cell))
                 cells.Add(cell.Coordinates);

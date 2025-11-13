@@ -17,7 +17,7 @@ namespace TPT.Gameplay.FightPhases.Grids.Phases
         }
 
 
-        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells, List<CellCoordinate> heroesCells)
+        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells)
         {
             for (int i = 0; i < range; i++)
             {

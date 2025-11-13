@@ -4,7 +4,6 @@ using DG.Tweening;
 using TPT.Core.Data;
 using TPT.Core.Phases;
 using TPT.Gameplay.Fights;
-using TPT.Gameplay.Fights.Attack;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Skills;
@@ -36,6 +35,8 @@ namespace TPT.Gameplay.Heroes
 
         private void Awake()
         {
+            MovementSpeed = HeroData.MovementRange;
+            Speed = HeroData.Speed;
             for (int i = 0; i < HeroData.Skills.Length; i++)
             {
                 var skillData = HeroData.Skills[i];
