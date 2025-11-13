@@ -1,12 +1,10 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights.AttackPhases.Player;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases.AttackPhases.Player;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.UI
+namespace TPT.Gameplay.FightPhases.UI
 {
     public class PlayerAttackPhaseUI : MonoBehaviour, IPhaseListener<PlayerAttackPhase>
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases;
 using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Heroes;
 using UnityEngine;

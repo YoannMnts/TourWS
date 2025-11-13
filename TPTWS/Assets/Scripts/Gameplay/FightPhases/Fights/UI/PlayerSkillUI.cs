@@ -2,7 +2,7 @@
 using TPT.Gameplay.Skills;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.UI
+namespace TPT.Gameplay.FightPhases.UI
 {
     public class PlayerSkillUI : MonoBehaviour
     {

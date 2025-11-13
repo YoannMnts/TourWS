@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TPT.Core.Data;
 using TPT.Core.Phases;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Skills;

@@ -5,7 +5,7 @@ using TPT.Gameplay.Grids.Phases;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.AttackPhases.Player
+namespace TPT.Gameplay.FightPhases.AttackPhases.Player
 {
     public class PlayerAttackPhase : AttackPhase
     {

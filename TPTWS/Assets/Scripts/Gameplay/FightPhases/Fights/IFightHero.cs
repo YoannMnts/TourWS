@@ -4,7 +4,7 @@ using TPT.Gameplay.Grids;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 
-namespace TPT.Gameplay.Fights
+namespace TPT.Gameplay.FightPhases
 {
     public interface IFightHero : IComparable<IFightHero>, IGridMember
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using NUnit.Framework.Internal;
 using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Heroes;
 using UnityEngine;

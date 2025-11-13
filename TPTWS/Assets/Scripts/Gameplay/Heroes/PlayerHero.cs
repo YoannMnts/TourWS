@@ -1,5 +1,5 @@
 ﻿using System;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases;
 
 namespace TPT.Gameplay.Heroes
 {

@@ -6,9 +6,9 @@ using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Fights.MovementPhase.Player
+namespace TPT.Gameplay.FightPhases.MovementPhases.Player
 {
-    public class PlayerMovementPhase : Gameplay.Fights.MovementPhase.MovementPhase
+    public class PlayerMovementPhase : MovementPhase
     {
         public PlayerMovementPhase(HeroTurnPhase heroTurnPhase) : base(heroTurnPhase)
         {

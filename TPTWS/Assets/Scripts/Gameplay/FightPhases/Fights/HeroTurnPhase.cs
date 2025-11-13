@@ -1,16 +1,13 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TPT.Core.Phases;
-using TPT.Gameplay.FightPhases.Fights.AttackPhases;
-using TPT.Gameplay.FightPhases.Fights.AttackPhases.Enemy;
-using TPT.Gameplay.FightPhases.Fights.AttackPhases.Player;
-using TPT.Gameplay.FightPhases.Fights.MovementPhase.Player;
-using TPT.Gameplay.Fights;
-using TPT.Gameplay.Fights.MovementPhase;
+using TPT.Gameplay.FightPhases.AttackPhases.Enemy;
+using TPT.Gameplay.FightPhases.AttackPhases.Player;
+using TPT.Gameplay.FightPhases.MovementPhases.Enemy;
+using TPT.Gameplay.FightPhases.MovementPhases.Player;
 using TPT.Gameplay.Grids;
 using UnityEngine;
-using UnityEngine.Pool;
 
-namespace TPT.Gameplay.FightPhases.Fights
+namespace TPT.Gameplay.FightPhases
 {
     public class HeroTurnPhase : IPhase
     {

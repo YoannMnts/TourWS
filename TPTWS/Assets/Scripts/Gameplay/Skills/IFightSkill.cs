@@ -1,5 +1,5 @@
 ﻿using TPT.Core.Data;
-using TPT.Gameplay.Fights;
+using TPT.Gameplay.FightPhases;
 using TPT.Gameplay.Grids;
 using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
