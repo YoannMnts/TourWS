@@ -1,10 +1,10 @@
-using UnityEngine;
 using TPT.Gameplay.Player;
 using TPT.Gameplay.Players;
+using UnityEngine;
 
-namespace TPT.Gameplay.PNJ
+namespace TPT.Gameplay.PNJs
 {
-        public class InteractPNJ : MonoBehaviour
+        public class InteractPNJ : MonoBehaviour, IInteractable
         {
                 [SerializeField] private string ChatText;
                 [SerializeField] private string ChatText2;
@@ -17,8 +17,8 @@ namespace TPT.Gameplay.PNJ
                 private int TextCount = 0;
 
                 [SerializeField] 
-                private int priority = 3;
-
+                private int priority = 1;
+        
                 public int Priority => priority;
 
                 private void Start()

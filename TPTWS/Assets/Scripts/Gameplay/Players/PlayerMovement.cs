@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players
 {
         [RequireComponent(typeof(CharacterController))]
-
         public class PlayerMovement : MonoBehaviour
         {
                 public float speed = 5f;
@@ -11,15 +11,17 @@ namespace TPT.Gameplay.Player
                 public float gravity = -9.81f;
 
                 private CharacterController controller;
+                private PlayerInput playerInput;
                 private Vector3 velocity;
                 private bool isGrounded;
 
                 void Start()
                 {
                         controller = GetComponent<CharacterController>();
+                        playerInput = GetComponent<PlayerInput>();
+                        playerInput.ActivateInput();
                 }
-
-                void Update()
+                void FixedUpdate()
                 {
                         // --- Gestion du sol ---
                         isGrounded = controller.isGrounded;
@@ -27,8 +29,17 @@ namespace TPT.Gameplay.Player
                                 velocity.y = -2f;
 
                         // --- Entrées ---
-                        float moveX = Input.GetAxisRaw("Horizontal");
-                        float moveZ = Input.GetAxisRaw("Vertical");
+                        string playerMove = "Player/Move";
+                        InputAction inputAction = playerInput.actions.FindAction(playerMove);
+                        if (inputAction == null)
+                        {
+                                Debug.Log($"Didn't find action {playerMove}");
+                                return;
+                        }
+                        Vector2 input =  inputAction.ReadValue<Vector2>();
+                        
+                        float moveX = input.x;
+                        float moveZ =input.y;
 
                         Vector3 direction = new Vector3(moveX, 0f, moveZ).normalized;
 
@@ -41,7 +52,7 @@ namespace TPT.Gameplay.Player
                                         rotationSpeed * Time.deltaTime);
 
                                 // --- Déplacement ---
-                                Vector3 move = transform.forward * speed * Time.deltaTime;
+                                Vector3 move = transform.forward * (speed * Time.deltaTime);
                                 controller.Move(move);
                         }
 

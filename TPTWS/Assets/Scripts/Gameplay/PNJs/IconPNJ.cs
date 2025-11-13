@@ -1,12 +1,13 @@
+using TPT.Gameplay.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TPT.Gameplay.PNJ
+namespace TPT.Gameplay.PNJs
 {
     public class IconPNJ : MonoBehaviour
     {
         public static IconPNJ Instance;
-        private PNJ currentNPC;
+        private IInteractable currentInteractable;
         [SerializeField] private float IconR = 1f;
     
         [Header("Image UI de l'icône")]
@@ -30,9 +31,9 @@ namespace TPT.Gameplay.PNJ
         }
         void Update()
         {
-            if (currentNPC != null)
+            if (currentInteractable != null)
             {
-                Vector3 worldPos = currentNPC.transform.position + Vector3.right* IconR + Vector3.up * 1; // plus haut que la tête
+                Vector3 worldPos = currentInteractable.transform.position + Vector3.right* IconR + Vector3.up * 1; // plus haut que la tête
                 Vector3 screenPos = mainCamera.WorldToScreenPoint(worldPos);
                 
                 if (screenPos.z > 0)
@@ -44,14 +45,14 @@ namespace TPT.Gameplay.PNJ
                 }
             }
         }
-        public void SetCurrentNPC(PNJ npc)
+        public void SetCurrent(IInteractable npc)
         {
-            currentNPC = npc;
+            currentInteractable = npc;
         }
         public void ClearCurrent()  
         {
             leftClickIcon.enabled = false;
-            currentNPC = null;
+            currentInteractable = null;
 
             
         }

@@ -7,7 +7,7 @@ namespace TPT.Gameplay.Player
 {
 	public class PlayerInteractions : MonoBehaviour
 	{
-		private PNJ current;
+		private IInteractable current;
 
 		public void OnInteractInput(InputAction.CallbackContext context)
 		{
@@ -17,22 +17,25 @@ namespace TPT.Gameplay.Player
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.TryGetComponent(out PNJ pnj))
+			if (other.TryGetComponent(out IInteractable interactable))
 			{
-				if(current && pnj.Priority < current.Priority)
+				Debug.Log(interactable.transform.name, interactable.transform);
+				if(current != null && interactable.Priority < current.Priority)
 					return;
 				
-				current = pnj;
-				IconPNJ.Instance.SetCurrentNPC(current);
+				Debug.Log("Setting to current");
+				current = interactable;
+				IconPNJ.Instance.SetCurrent(current);
 			}
 		}
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.TryGetComponent(out PNJ pnj))
+			if (other.TryGetComponent(out IInteractable interactable))
 			{
-				if(current != pnj)
+				if(current != interactable)
 					return;
 				
+				Debug.Log("Clearing current");
 				current = null;
 				IconPNJ.Instance.ClearCurrent();
 			}
