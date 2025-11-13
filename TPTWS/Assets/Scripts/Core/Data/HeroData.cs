@@ -15,13 +15,13 @@ namespace TPT.Core.Data
         public int MaxHealth { get; private set; }
         
         [field: SerializeField]
-        public int Speed { get; private set; }
+        public int Strength { get; private set; }
         
         [field: SerializeField]
         public int MovementRange { get; private set; }
 
         [field: SerializeField]
-        public int Strength { get; private set; }
+        public int Speed { get; private set; }
         
         [field: SerializeField]
         public  SkillData [] Skills { get; private set; }

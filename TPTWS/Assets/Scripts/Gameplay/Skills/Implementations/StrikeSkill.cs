@@ -34,7 +34,7 @@ namespace TPT.Gameplay.Skills
         public override bool GetPattern(out ICellPattern pattern)
         {
             pattern = new DirectionCellPattern(Data.Range);
-            return false;
+            return true;
         }
     }
 }

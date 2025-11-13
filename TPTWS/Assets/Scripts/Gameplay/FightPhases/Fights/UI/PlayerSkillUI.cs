@@ -23,6 +23,8 @@ namespace TPT.Gameplay.FightPhases.Fights.UI
             skillName.text = skill.SkillData.Name;
             skillDescription.text = skill.SkillData.Description;
         }
+        
+        
 
         public void OnClick()
         {
