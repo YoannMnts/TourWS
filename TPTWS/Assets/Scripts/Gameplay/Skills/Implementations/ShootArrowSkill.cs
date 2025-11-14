@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace TPT.Gameplay.Skills
 {
-    public class ShootArrow : FightSkill<ShootArrowData>
+    public class ShootArrowSkill : FightSkill<ShootArrowSkillData>
     {
-        public ShootArrow(ShootArrowData data) : base(data)
+        public ShootArrowSkill(ShootArrowSkillData data) : base(data)
         {
         }
 

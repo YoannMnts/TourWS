@@ -21,8 +21,8 @@ namespace TPT.Gameplay.Skills
 
         public override bool GetPattern(out ICellPattern pattern)
         {
-            pattern = new AttackFloodFillPattern(Data.Range);
-            return true;
+            pattern = null;
+            return false;
         }
     }
 }
