@@ -62,8 +62,8 @@ namespace TPT.Gameplay.Heroes
             Debug.Log($"Ending turn for {name}", gameObject);
             await Awaitable.WaitForSecondsAsync(.2f);
         }
-
         public FightGrid Grid { get; set; }
+
         public async Awaitable MoveTo(CellCoordinate targetCoordinates)
         {
             if (Coordinates.Equals(targetCoordinates))

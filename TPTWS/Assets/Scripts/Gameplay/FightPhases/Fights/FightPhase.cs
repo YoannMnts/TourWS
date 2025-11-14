@@ -25,12 +25,13 @@ namespace TPT.Gameplay.FightPhases
 
         async Awaitable IPhase.Begin()
         {
+            
             grid.GenerateCells();
             for (int i = 0; i < heroes.Length; i++)
             {
+                Debug.Log($"c'est la grid : {grid}");
                 FightCell cell = grid.GetCellSpawn(heroes[i]);
                 IFightHero fightHero = heroes[i];
-                Debug.Log($"{fightHero} essaie d'aller a {cell}");
                 await fightHero.MoveTo(cell.Coordinates);
                 
                 await grid.AddMember(fightHero);

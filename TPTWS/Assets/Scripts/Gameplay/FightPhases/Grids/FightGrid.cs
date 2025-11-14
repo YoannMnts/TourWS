@@ -234,6 +234,7 @@ namespace TPT.Gameplay.FightPhases.Grids
         
         public FightCell GetCellSpawn(IFightHero fightHero)
         {
+            Debug.Log(fightHero);
             for (int i = 0; i < Enemies.Length; i++)
             {
                 if ((IFightHero)Enemies[i].Enemy == fightHero)
