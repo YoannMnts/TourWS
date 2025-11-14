@@ -1,55 +1,62 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players
 {
         [RequireComponent(typeof(CharacterController))]
         public class PlayerMovement : MonoBehaviour
         {
-                public float speed = 5f; // Vitesse de déplacement
-                public float rotationSpeed = 2f; // Vitesse de déplacement
-                public float gravity = -9.81f; // Gravité
+                public float speed = 5f;
+                public float rotationSpeed = 10f;
+                public float gravity = -9.81f;
 
                 private CharacterController controller;
+                private PlayerInput playerInput;
                 private Vector3 velocity;
                 private bool isGrounded;
 
                 void Start()
                 {
                         controller = GetComponent<CharacterController>();
+                        playerInput = GetComponent<PlayerInput>();
+                        playerInput.ActivateInput();
                 }
-
-                void Update()
+                void FixedUpdate()
                 {
-                        Vector3 direction = Vector3.zero;
-
-                        if (Input.GetKey(KeyCode.Z))
-                                direction = Vector3.forward;
-                        else if (Input.GetKey(KeyCode.S))
-                                direction = Vector3.back;
-                        else if (Input.GetKey(KeyCode.Q))
-                                direction = Vector3.left;
-                        else if (Input.GetKey(KeyCode.D))
-                                direction = Vector3.right;
-
-                        // Si une touche directionnelle est pressée
-                        if (direction != Vector3.zero)
-                        {
-                                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-                                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation,
-                                        rotationSpeed * Time.deltaTime);
-                        }
+                        // --- Gestion du sol ---
                         isGrounded = controller.isGrounded;
                         if (isGrounded && velocity.y < 0)
+                                velocity.y = -2f;
+
+                        // --- Entrées ---
+                        string playerMove = "Player/Move";
+                        InputAction inputAction = playerInput.actions.FindAction(playerMove);
+                        if (inputAction == null)
                         {
-                                velocity.y = -2f; 
+                                Debug.Log($"Didn't find action {playerMove}");
+                                return;
                         }
-                        float moveX = Input.GetAxis("Horizontal");
-                        float moveZ = Input.GetAxis("Vertical");   
+                        Vector2 input =  inputAction.ReadValue<Vector2>();
+                        
+                        float moveX = input.x;
+                        float moveZ =input.y;
 
-                        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-                        controller.Move(move * speed * Time.deltaTime);
+                        Vector3 direction = new Vector3(moveX, 0f, moveZ).normalized;
 
+                        // --- Rotation du joueur ---
+                        if (direction.magnitude >= 0.1f)
+                        {
+                                // Calcule la direction vers laquelle regarder
+                                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation,
+                                        rotationSpeed * Time.deltaTime);
+
+                                // --- Déplacement ---
+                                Vector3 move = transform.forward * (speed * Time.deltaTime);
+                                controller.Move(move);
+                        }
+
+                        // --- Gravité ---
                         velocity.y += gravity * Time.deltaTime;
                         controller.Move(velocity * Time.deltaTime);
                 }

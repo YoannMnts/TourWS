@@ -1,0 +1,32 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace TPT.Gameplay.FightPhases.Grids.Patterns
+{
+    public class RayCellPattern : ICellPattern
+    {
+        protected readonly int range;
+        protected readonly Vector2Int direction;
+
+        public RayCellPattern(int range, Vector2Int direction)
+        {
+            this.range = range;
+            this.direction = direction;
+        }
+
+
+        public void GetCells(FightGrid fightGrid, CellCoordinate coordinate, List<CellCoordinate> cells)
+        {
+            for (int i = 0; i < range; i++)
+            {
+                CellCoordinate to = new CellCoordinate()
+                {
+                    x = coordinate.x + direction.x * i,
+                    y = coordinate.y + direction.y * i
+                };
+                
+                cells.Add(to);
+            }
+        }
+    }
+}

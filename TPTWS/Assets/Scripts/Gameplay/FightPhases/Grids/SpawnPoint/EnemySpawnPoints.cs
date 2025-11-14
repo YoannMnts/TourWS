@@ -2,7 +2,7 @@
 using TPT.Gameplay.Heroes;
 using UnityEngine;
 
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids.SpawnPoint
 {
     [Serializable]
     public struct EnemySpawnPoints

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     public class FightGridManager : MonoBehaviour
     {

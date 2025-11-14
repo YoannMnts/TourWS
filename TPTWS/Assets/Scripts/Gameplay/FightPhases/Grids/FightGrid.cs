@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
-using TPT.Gameplay.Fights;
-using TPT.Gameplay.Heroes;
+using TPT.Gameplay.FightPhases.Grids.SpawnPoint;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     [RequireComponent(typeof(BoxCollider))]
     [ExecuteInEditMode]
@@ -29,9 +25,12 @@ namespace TPT.Gameplay.Grids
         
         private Dictionary<CellCoordinate, FightCell> cells;
         
-
         [SerializeField, HideInInspector]
         private FightGridManager manager;
+
+        public IEnumerable<CellCoordinate> CellCoordinates => cells.Keys;
+        
+        public Dictionary<IGridMember, CellCoordinate> Members { get; private set; }
 
 
         private void Reset()
@@ -42,6 +41,7 @@ namespace TPT.Gameplay.Grids
 
         private void Awake()
         {
+            Members = new ();
             //Degeu mais tant pis
             if(manager == null)
                 manager = FindFirstObjectByType<FightGridManager>();
@@ -58,24 +58,77 @@ namespace TPT.Gameplay.Grids
         {
             manager.RemoveGrid(this);
         }
-        
-        
-#if UNITY_EDITOR
-        private void OnDrawGizmos()
+
+        public Awaitable AddMember(IGridMember member)
         {
-            using (ListPool<CellCoordinate>.Get(out var list))
+            if(member.Grid != this)
+                member.Grid?.RemoveMember(member);
+            
+            member.Grid = this;
+            FightCell cell = GetNearestCellCoord(member.transform.position);
+            Members.Add(member, cell.Coordinates);
+            
+            return member.MoveTo(cell.Coordinates);
+        }
+
+        public void RemoveMember(IGridMember member)
+        {
+            Members.Remove(member);
+        }
+
+        public Awaitable MoveMember(IGridMember gridMember, CellCoordinate cellCoordinate)
+        {
+            if (TryGetCell(cellCoordinate, out FightCell cell))
             {
-                GetCells(list);
-                foreach (var cellCoordinate in list)
+                Members[gridMember] = cell.Coordinates;
+                return gridMember.MoveTo(cell.Coordinates);
+            }
+
+            return Awaitable.EndOfFrameAsync();
+        }
+        public Awaitable MoveMember(IGridMember gridMember, int x, int y)
+        {
+            if (TryGetCell(x, y, out FightCell cell))
+            {
+                Members[gridMember] = cell.Coordinates;
+                return gridMember.MoveTo(cell.Coordinates);
+            }
+
+            return Awaitable.EndOfFrameAsync();
+        }
+
+        public bool TryGetMember(int x, int y, out IGridMember member)
+        {
+            if(TryGetCell(x, y, out FightCell cell))
+                return TryGetMember(cell.Coordinates, out member);
+            
+            member = null;
+            return false;
+        }
+        public bool TryGetMember(CellCoordinate cellCoordinate, out IGridMember member)
+        {
+            foreach (var (gridMember, coord) in Members)
+            {
+                if (cellCoordinate.Equals(coord))
                 {
-                    Vector3 vector3 = new Vector3(manager.CellSize, .2f, manager.CellSize);
-                    Gizmos.DrawWireCube(cellCoordinate.position, vector3);
-                    
-                    Handles.Label(cellCoordinate.position, $"{cellCoordinate.x} : {cellCoordinate.y}");
+                    member = gridMember;
+                    return true;
                 }
             }
+            
+            member = null;
+            return false;
         }
-#endif
+        public bool TryGetMemberCoord(IGridMember member, out CellCoordinate cell) => Members.TryGetValue(member, out cell);
+        public bool TryGetMemberCell(IGridMember member, out FightCell cell)
+        {
+            if(Members.TryGetValue(member, out CellCoordinate coordinate) && cells.TryGetValue(coordinate, out cell))
+                return true;
+            
+            cell = null;
+            return false;
+        }
+        
         private void GetCells(List<CellCoordinate> coordinates)
         {
             Bounds bounds = zone.bounds;
@@ -193,5 +246,23 @@ namespace TPT.Gameplay.Grids
             }
             return null;
         }
+        
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            using (ListPool<CellCoordinate>.Get(out var list))
+            {
+                GetCells(list);
+                foreach (var cellCoordinate in list)
+                {
+                    Vector3 vector3 = new Vector3(manager.CellSize, .2f, manager.CellSize);
+                    Gizmos.DrawWireCube(cellCoordinate.position, vector3 * .9f);
+                    
+                    Handles.Label(cellCoordinate.position, $"{cellCoordinate.x} : {cellCoordinate.y}");
+                }
+            }
+        }
+#endif
     }
 }

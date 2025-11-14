@@ -1,8 +1,9 @@
 ﻿using System;
 using NUnit.Framework.Internal;
 using TPT.Core.Phases;
-using TPT.Gameplay.Fights;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases;
+using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.FightPhases.Grids.SpawnPoint;
 using TPT.Gameplay.Heroes;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -32,6 +33,7 @@ namespace Debug
                     list.Add(playerHeroes[i]);
 
                 list.Sort();
+                list.Reverse();
                 FightPhase fightPhase = new FightPhase(list.ToArray(), grid);
 
                 fightPhase.Run();

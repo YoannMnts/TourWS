@@ -13,22 +13,13 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "AttaqueSpecial",
                     "type": "Button",
                     "id": "a137552d-ee7a-4597-a018-0586ce3bedad",
                     "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "50750b5d-837d-4336-96b9-b77869b9a59f",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -56,11 +47,37 @@
                     "action": "AttaqueSpecial",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "10dc888c-5bdc-4aa1-8a91-00d8c7c5764d",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "605f7f03-056d-4ea0-a3ba-9f353d7edfaa",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "5b38aa99-dc9e-4c1e-8cf6-c814bda3e2be",
-                    "path": "2DVector",
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "838825c2-959f-4ba2-80e8-e650972fd616",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WSAD",
+                    "id": "c32b9820-acbc-41b4-aa5e-774fc368b8df",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +87,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "67d3d79a-f563-42c0-ace8-011406565850",
+                    "id": "b180dc2b-581a-454d-8675-232b0abb0339",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -81,7 +98,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "efdf30c1-4453-4c88-b732-5d2110193afd",
+                    "id": "4797d20e-8e7e-439f-92c9-7853a30a4f1d",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -92,7 +109,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "081c0cd4-bd81-4674-aed0-28b0dea16ef2",
+                    "id": "f0a8fabe-5ef6-4884-972d-05502a5b4929",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -103,7 +120,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "827fc4bd-f87f-4a7a-8aa5-cbcbe27283a0",
+                    "id": "fd2f806e-c11f-4a27-9bfd-b41a3c49c323",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -111,6 +128,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "20370778-d4f6-4709-9aec-232ccef89cab",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
