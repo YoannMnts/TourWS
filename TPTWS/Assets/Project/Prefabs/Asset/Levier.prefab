@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4533033845191157471}
   - component: {fileID: 3783077791550314836}
   - component: {fileID: 5262016347602812892}
+  - component: {fileID: 2347209516071081602}
   - component: {fileID: -7856654157167661501}
   m_Layer: 0
   m_Name: Levier
@@ -112,6 +113,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2347209516071081602
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729728030123972020}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!114 &-7856654157167661501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +152,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be69a9d2b6e31940b134ce17b9728f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Level.Levier
-  isActive: 0

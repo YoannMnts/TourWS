@@ -1,17 +1,9 @@
-using TPT.Gameplay.Players.Interactions;
 using UnityEngine;
 
 namespace TPT.Gameplay.Level
 {
-        public class InteractLevier : MonoBehaviour, IInteractable
+        public class InteractLevier : MonoBehaviour
         {
-                
-                
-                public void Interact()
-                {
-                        _currentLevier.Interacting();
-                }
-
                 private Levier _currentLevier;
                 
                 private void OnTriggerEnter(Collider other)

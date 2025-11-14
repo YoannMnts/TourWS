@@ -1,3 +1,4 @@
+using TPT.Gameplay.Level;
 using TPT.Gameplay.PNJs;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ namespace TPT.Gameplay.Players.Interactions
 
 		public void OnInteractInput(InputAction.CallbackContext context)
 		{
+			Debug.Log($"j'interagit avec : {current}");
 			if (current != null  && context.performed)
 				current.Interact();
 		}
@@ -24,6 +26,8 @@ namespace TPT.Gameplay.Players.Interactions
 				current = interactable;
 				IconPNJ.Instance.SetCurrent(current);
 			}
+
+			Debug.Log($"trigerred by {other.name}");
 		}
 		private void OnTriggerExit(Collider other)
 		{
