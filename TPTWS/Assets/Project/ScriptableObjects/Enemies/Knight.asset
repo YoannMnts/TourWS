@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.HeroData
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <MaxHealth>k__BackingField: 0
-  <Strength>k__BackingField: 0
-  <MovementRange>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <Skills>k__BackingField: []
+  <MaxHealth>k__BackingField: 200
+  <Strength>k__BackingField: 60
+  <MovementRange>k__BackingField: 2
+  <Speed>k__BackingField: 1
+  <Skills>k__BackingField:
+  - {fileID: 0}

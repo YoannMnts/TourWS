@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.StrikeSkillData
   <Name>k__BackingField: Strike Bard
   <Description>k__BackingField: qskbhjdvnsdv
-  <Damage>k__BackingField: 0
+  <Damage>k__BackingField: 20
   <Range>k__BackingField: 1

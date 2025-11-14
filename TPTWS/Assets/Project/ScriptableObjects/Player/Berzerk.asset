@@ -16,7 +16,7 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <MaxHealth>k__BackingField: 250
   <Strength>k__BackingField: 60
-  <MovementRange>k__BackingField: 2
+  <MovementRange>k__BackingField: 3
   <Speed>k__BackingField: 2
   <Skills>k__BackingField:
   - {fileID: 11400000, guid: aa2e256ecdfc91949a89b1d9280c0a1a, type: 2}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.ShootArrowData
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <Damage>k__BackingField: 0
-  <Range>k__BackingField: 0
+  <Damage>k__BackingField: 60
+  <Range>k__BackingField: 2
