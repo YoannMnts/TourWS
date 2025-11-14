@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Strike
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.StrikeSkillData
   <Name>k__BackingField: Strike
-  <Description>k__BackingField: 'azeaeva r zerara '
+  <Description>k__BackingField: Frappe devant lui
   <Damage>k__BackingField: 60
   <Range>k__BackingField: 2

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StrikeBard
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.StrikeSkillData
   <Name>k__BackingField: Strike Bard
-  <Description>k__BackingField: qskbhjdvnsdv
+  <Description>k__BackingField: Frappe devant lui mais en moins fort
   <Damage>k__BackingField: 20
   <Range>k__BackingField: 1
