@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Scream
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.ScreamSkillData
   <Name>k__BackingField: Scream
-  <Description>k__BackingField: qsfjkbqhjkdcbshjvd
+  <Description>k__BackingField: "Les 2 prochains tours, tout les d\xE9g\xE2ts sont
+    focus sur ce player"
   <Duration>k__BackingField: 2

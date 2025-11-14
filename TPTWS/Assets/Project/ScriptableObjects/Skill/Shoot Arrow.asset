@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shoot Arrow
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.ShootArrowData
   <Name>k__BackingField: 
-  <Description>k__BackingField: 
-  <Damage>k__BackingField: 0
-  <Range>k__BackingField: 0
+  <Description>k__BackingField: "Lance des fl\xE8ches dans la zone indiqu\xE9s"
+  <Damage>k__BackingField: 60
+  <Range>k__BackingField: 2

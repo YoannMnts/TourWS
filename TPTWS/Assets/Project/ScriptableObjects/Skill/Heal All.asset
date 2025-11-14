@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Heal All
   m_EditorClassIdentifier: TPT.Core::TPT.Core.Data.Skills.HealAllSkillData
   <Name>k__BackingField: Heal all
-  <Description>k__BackingField: sdbfskhjdvbshjd,nv
-  <Heal>k__BackingField: 1
+  <Description>k__BackingField: Heal tout les joueurs de la grille
+  <Heal>k__BackingField: 50
