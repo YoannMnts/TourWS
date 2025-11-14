@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     public interface IGridMember
     {

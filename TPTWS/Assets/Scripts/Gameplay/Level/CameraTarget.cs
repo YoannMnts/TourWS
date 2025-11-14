@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TPT.Gameplay
+namespace TPT.Gameplay.Level
 {
     public class CameraTarget : MonoBehaviour
     {

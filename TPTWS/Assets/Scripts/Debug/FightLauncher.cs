@@ -2,7 +2,8 @@
 using NUnit.Framework.Internal;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.FightPhases.Grids.SpawnPoint;
 using TPT.Gameplay.Heroes;
 using UnityEngine;
 using UnityEngine.Pool;

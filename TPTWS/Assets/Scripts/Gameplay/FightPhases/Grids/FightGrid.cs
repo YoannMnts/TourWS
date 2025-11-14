@@ -1,16 +1,10 @@
 ﻿using System.Collections.Generic;
-using TPT.Gameplay.FightPhases;
-using TPT.Gameplay.Grids.Phases;
-using TPT.Gameplay.Heroes;
+using TPT.Gameplay.FightPhases.Grids.SpawnPoint;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
-#if UNITY_EDITOR
-using TPT.Gameplay.FightPhases.Grids.Phases;
-using UnityEditor;
-#endif
-
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     [RequireComponent(typeof(BoxCollider))]
     [ExecuteInEditMode]

@@ -1,5 +1,5 @@
 ﻿using TPT.Core.Phases;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases.Grids;
 using UnityEngine;
 
 namespace TPT.Gameplay.FightPhases.AttackPhases

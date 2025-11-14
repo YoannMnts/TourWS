@@ -2,9 +2,9 @@
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.AttackPhases.Enemy;
 using TPT.Gameplay.FightPhases.AttackPhases.Player;
+using TPT.Gameplay.FightPhases.Grids;
 using TPT.Gameplay.FightPhases.MovementPhases.Enemy;
 using TPT.Gameplay.FightPhases.MovementPhases.Player;
-using TPT.Gameplay.Grids;
 using UnityEngine;
 
 namespace TPT.Gameplay.FightPhases

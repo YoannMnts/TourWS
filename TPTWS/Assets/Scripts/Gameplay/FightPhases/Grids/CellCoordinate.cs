@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     public struct CellCoordinate : IEquatable<CellCoordinate>
     {

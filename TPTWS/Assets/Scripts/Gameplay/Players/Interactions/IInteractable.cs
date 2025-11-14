@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players.Interactions
 {
 	public interface IInteractable
 	{

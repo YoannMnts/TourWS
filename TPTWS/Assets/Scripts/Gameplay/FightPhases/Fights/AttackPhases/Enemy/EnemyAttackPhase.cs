@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases.Grids;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 using Random = UnityEngine.Random;

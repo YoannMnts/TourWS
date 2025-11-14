@@ -1,12 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using DG.Tweening;
 using TPT.Core.Phases;
-using TPT.Gameplay.Grids.Phases;
+using TPT.Gameplay.FightPhases.Grids.Phases;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace TPT.Gameplay.Grids
+namespace TPT.Gameplay.FightPhases.Grids
 {
     public class FightCell : MonoBehaviour, IPhaseListener<SelectCellPhase>, 
         IPointerEnterHandler,

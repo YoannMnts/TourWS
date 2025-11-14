@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using TPT.Gameplay.Grids;
-using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 
-namespace TPT.Gameplay.FightPhases.Grids.Phases
+namespace TPT.Gameplay.FightPhases.Grids.Patterns
 {
     public class RayCellPattern : ICellPattern
     {

@@ -1,9 +1,8 @@
-using System;
 using TPT.Gameplay.PNJs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TPT.Gameplay.Player
+namespace TPT.Gameplay.Players.Interactions
 {
 	public class PlayerInteractions : MonoBehaviour
 	{

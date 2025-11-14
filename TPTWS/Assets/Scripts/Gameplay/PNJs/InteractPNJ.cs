@@ -1,5 +1,5 @@
-using TPT.Gameplay.Player;
 using TPT.Gameplay.Players;
+using TPT.Gameplay.Players.Interactions;
 using UnityEngine;
 
 namespace TPT.Gameplay.PNJs

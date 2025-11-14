@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases.Grids;
 using TPT.Gameplay.Skills;
 using UnityEngine;
 

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using TPT.Gameplay.Grids;
-using TPT.Gameplay.Grids.Phases;
 
 namespace TPT.Gameplay.FightPhases.Grids.Patterns
 {

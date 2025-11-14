@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TPT.Gameplay.Grids;
+using TPT.Gameplay.FightPhases.Grids;
 using UnityEngine;
 
 namespace TPT.Gameplay.FightPhases.MovementPhases.Enemy

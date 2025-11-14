@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TPT.Gameplay.Grids.Phases
+namespace TPT.Gameplay.FightPhases.Grids.Patterns
 {
     public interface ICellPattern
     {

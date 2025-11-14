@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Grids.Patterns;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace TPT.Gameplay.Grids.Phases
+namespace TPT.Gameplay.FightPhases.Grids.Phases
 {
     public class SelectCellPhase : IPhase
     {

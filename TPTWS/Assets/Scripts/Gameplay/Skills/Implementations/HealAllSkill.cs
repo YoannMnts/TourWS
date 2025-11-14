@@ -1,8 +1,8 @@
 ﻿using TPT.Core.Data.Skills;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases;
-using TPT.Gameplay.Grids;
-using TPT.Gameplay.Grids.Phases;
+using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.FightPhases.Grids.Patterns;
 using UnityEngine;
 
 namespace TPT.Gameplay.Skills

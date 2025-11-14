@@ -1,4 +1,4 @@
-using TPT.Gameplay.Player;
+using TPT.Gameplay.Players.Interactions;
 using UnityEngine;
 using UnityEngine.UI;
 

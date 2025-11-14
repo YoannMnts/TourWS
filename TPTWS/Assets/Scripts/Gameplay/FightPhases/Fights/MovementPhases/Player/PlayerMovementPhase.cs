@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TPT.Core.Phases;
+using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.FightPhases.Grids.Patterns;
 using TPT.Gameplay.FightPhases.Grids.Phases;
-using TPT.Gameplay.Grids;
-using TPT.Gameplay.Grids.Phases;
 using UnityEngine;
 
 namespace TPT.Gameplay.FightPhases.MovementPhases.Player
