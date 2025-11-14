@@ -4,24 +4,22 @@ using UnityEngine;
 
 namespace TPT.Gameplay.PNJs
 {
-        public class InteractPNJ : MonoBehaviour, IInteractable
+    public class InteractEnnemy : MonoBehaviour, IInteractable
         {
                 [SerializeField] private string ChatText;
                 [SerializeField] private string ChatText2;
-                [SerializeField] private string ChatText3;
                 
                 [SerializeField] private IconPNJ iconPNJ;
                 [SerializeField] private ChatBubble chatBubble;
                 [SerializeField] private PlayerMovement playerMovement;
+                public bool combat = false;
                 
                 private int TextCount = 0;
 
                 private void Start()
                 {
-                        playerMovement.enabled = false;
-                        iconPNJ.ClearCurrent();
-                        chatBubble.Show(ChatText);
-                        TextCount++;
+                        combat=false;
+                        TextCount=0;
                 }
                 
                 public void Interact()
@@ -43,18 +41,12 @@ namespace TPT.Gameplay.PNJs
                                 
                                         TextCount++;
                                         break;
-                                case 2:
-                                        playerMovement.enabled = false;
-                                        iconPNJ.ClearCurrent();
-                                        chatBubble.Show(ChatText3);
-                                
-                                        TextCount++;
-                                        break;
                                 case 3:
                                         playerMovement.enabled = true;
                                         iconPNJ.ClearCurrent();
                                         chatBubble.Hide();
                                         TextCount=0;
+                                        combat = true;
                                         break;
                         }
                 }
