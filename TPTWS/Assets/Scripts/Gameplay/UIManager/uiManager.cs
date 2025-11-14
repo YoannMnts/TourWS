@@ -1,3 +1,6 @@
+
+using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,11 +9,12 @@ namespace TPT.Gameplay.UIManager
     public class uiManager : MonoBehaviour
     {
 	    [SerializeField] private GameObject pauseInterface;
-
-	    public void Start()
+	    
+	    [UsedImplicitly]
+	    public void Load()
 	    {
-
-		    pauseInterface.SetActive(false);
+		    SceneManager.LoadScene(1);
+		    Resume();
 		    Time.timeScale = 1;
 	    }
 	    public void Pause()
@@ -18,7 +22,6 @@ namespace TPT.Gameplay.UIManager
 		    pauseInterface.SetActive(true);
 		    Time.timeScale = 0;
 	    }
-	    
 	    public void Resume()
 	    {
 		    pauseInterface.SetActive(false);
@@ -33,6 +36,7 @@ namespace TPT.Gameplay.UIManager
 	    {
 		    Application.Quit();
 	    }
+	    
     }
     
 }

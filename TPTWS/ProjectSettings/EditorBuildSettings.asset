@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BattleScene/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/SceneDemarage.unity
+    guid: 5b02330f016a59441bc04395f558e706
+  - enabled: 1
+    path: Assets/Scenes/ExplorationScene/LvLOpenAir.unity
+    guid: 85c9bbb8231689645a35d38a162e9903
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7fd693c2a921c864cb2028840122c65d, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
