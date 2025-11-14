@@ -10,7 +10,7 @@ namespace TPT.Gameplay.Level
                 [SerializeField] private UnityEvent<int, int> OnLevierChange;
         
                 [SerializeField] private DoorMove waterController;
-        
+                
                 private void OnEnable()
                 {
                         foreach (Levier levier in leviers)
@@ -23,7 +23,7 @@ namespace TPT.Gameplay.Level
                 {
                         foreach (Levier levier in leviers)
                         {
-                                levier.OnLevierChange -= CheckLeviers;
+                               levier.OnLevierChange -= CheckLeviers;
                         }
                 }
         
@@ -50,6 +50,7 @@ namespace TPT.Gameplay.Level
         
                         OnLevierChange?.Invoke(active, leviers.Length);
                 }
+                
         }
     }
 

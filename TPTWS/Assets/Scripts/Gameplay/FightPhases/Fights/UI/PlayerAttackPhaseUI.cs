@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using TMPro;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.AttackPhases.Player;
 using TPT.Gameplay.Skills;
@@ -14,6 +15,9 @@ namespace TPT.Gameplay.FightPhases.UI
         [SerializeField]
         private Transform skillRoot;
 
+        [SerializeField]
+        public Transform[] stats;
+        
         [SerializeField] 
         private CanvasGroup group;
 
@@ -53,6 +57,12 @@ namespace TPT.Gameplay.FightPhases.UI
                 GameObject instance = Instantiate(skillUIPrefab, skillRoot);
                 if (instance.TryGetComponent(out PlayerSkillUI skillUI))
                     skillUI.Initialize(this, skill);
+            }
+
+            for (int i = 0; i < stats.Length; i++)
+            {
+                if(stats[i].TryGetComponent(out PlayerStatUI statUI))
+                    statUI.Initialize(currentHero, i);
             }
         }
 

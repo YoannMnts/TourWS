@@ -1,34 +1,23 @@
-using TPT.Gameplay.Players.Interactions;
 using UnityEngine;
 
 namespace TPT.Gameplay.Level
 {
-        public class InteractLevier : MonoBehaviour, IInteractable
+        public class InteractLevier : MonoBehaviour
         {
-                [SerializeField]
-                private KeyCode interactKey = KeyCode.E;
-                public int Priority => 3;
-                
-                
-                public void Interact()
-                {
-                        currentLevier.Interacting();
-                }
-
-                private Levier currentLevier;
+                private Levier _currentLevier;
                 
                 private void OnTriggerEnter(Collider other)
                 {
                         Levier levier = other.GetComponent<Levier>();
                         if (levier != null)
-                                currentLevier = levier;
+                                _currentLevier = levier;
                 }
 
                 private void OnTriggerExit(Collider other)
                 {
                         Levier levier = other.GetComponent<Levier>();
-                        if (levier != null && levier == currentLevier)
-                                currentLevier = null;
+                        if (levier != null && levier == _currentLevier)
+                                _currentLevier = null;
                 }
         }
 }

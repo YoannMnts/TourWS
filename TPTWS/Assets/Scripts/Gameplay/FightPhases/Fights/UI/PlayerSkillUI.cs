@@ -28,6 +28,7 @@ namespace TPT.Gameplay.FightPhases.UI
 
         public void OnClick()
         {
+            Debug.Log($"PlayerSkillUI OnClick {Current}");
             playerAttackPhaseUI.SelectSkill(Current);
         }
     }

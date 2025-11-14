@@ -7,8 +7,5 @@ namespace TPT.Core.Data.Skills
     {
         [field: SerializeField, Range(0, 10)] 
         public int Duration { get; private set; } = 2;
-        
-        [field: SerializeField, Range(0, 3)] 
-        public int Range { get; private set; } = 2;
     }
 }
