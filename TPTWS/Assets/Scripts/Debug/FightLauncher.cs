@@ -25,7 +25,7 @@ namespace Debug
 
         public void Interact()
         {
-            PlayerSaveSystem.SavePlayerPosition(playerTransform);
+            //PlayerSaveSystem.SavePlayerPosition(playerTransform);
             using (ListPool<IFightHero>.Get(out var list))
             {
                 for (int i = 0; i < grid.Enemies.Length; i++)

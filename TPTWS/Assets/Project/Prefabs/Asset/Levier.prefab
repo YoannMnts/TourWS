@@ -138,7 +138,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 78
   m_CollisionDetection: 0
 --- !u!114 &-7856654157167661501
 MonoBehaviour:
@@ -152,3 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be69a9d2b6e31940b134ce17b9728f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Level.Levier
+  isActive: 0

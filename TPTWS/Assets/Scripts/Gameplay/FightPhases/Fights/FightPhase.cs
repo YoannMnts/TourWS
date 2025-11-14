@@ -30,7 +30,7 @@ namespace TPT.Gameplay.FightPhases
             {
                 FightCell cell = grid.GetCellSpawn(heroes[i]);
                 IFightHero fightHero = heroes[i];
-                
+                Debug.Log($"{fightHero} essaie d'aller a {cell}");
                 await fightHero.MoveTo(cell.Coordinates);
                 
                 await grid.AddMember(fightHero);
