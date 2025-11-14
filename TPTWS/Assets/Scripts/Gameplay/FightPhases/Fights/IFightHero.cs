@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TPT.Core.Data;
 using TPT.Gameplay.FightPhases.Grids;
 using TPT.Gameplay.Skills;
 using UnityEngine;
@@ -11,8 +12,10 @@ namespace TPT.Gameplay.FightPhases
         bool IsPlayerHero { get; }
         bool IsAlive { get; }
         int CurrentStrength { get; }
+        int CurrentHealth { get; }
         int MovementSpeed { get; }
         int Speed { get; }
+        HeroData HeroData { get; }
         CellCoordinate Coordinates { get; }
 
         Awaitable OnTurnBegin();

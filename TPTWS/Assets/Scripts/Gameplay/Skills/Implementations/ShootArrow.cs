@@ -7,15 +7,15 @@ using UnityEngine;
 
 namespace TPT.Gameplay.Skills
 {
-    public class ScreamSkill : FightSkill<ScreamSkillData>
+    public class ShootArrow : FightSkill<ShootArrowData>
     {
-        public ScreamSkill(ScreamSkillData data) : base(data)
+        public ShootArrow(ShootArrowData data) : base(data)
         {
         }
 
         public override Awaitable Perform(IFightHero skillOwner, FightGrid grid, CellCoordinate cellCoordinate)
         {
-            Debug.Log("ScreamSkill performed");
+            Debug.Log("je tire");
             return PhaseManager.CompletedPhase;
         }
 
