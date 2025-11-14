@@ -28,7 +28,7 @@ namespace TPT.Gameplay.Heroes
         public int Speed { get; private set; } = 1;
         
         public int CurrentStrength { get; private set; }
-        public int CurrentHealth { get; private set; } = 100;
+        public int CurrentHealth { get; private set; } = 0;
         
         public CellCoordinate Coordinates { get; private set; }
 
@@ -37,6 +37,8 @@ namespace TPT.Gameplay.Heroes
             Debug.Log($"hero {name} is Awake, Skills Count: {HeroData.Skills.Length}");
             MovementSpeed = HeroData.MovementRange;
             Speed = HeroData.Speed;
+            CurrentStrength = HeroData.Strength;
+            CurrentHealth = HeroData.MaxHealth;
             for (int i = 0; i < HeroData.Skills.Length; i++)
             {
                 var skillData = HeroData.Skills[i];

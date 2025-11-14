@@ -25,7 +25,7 @@ namespace TPT.Gameplay.FightPhases.AttackPhases.Player
                 await Awaitable.NextFrameAsync();
             
             OnAttackSelected?.Invoke(SelectedFightSkill);
-            
+            Debug.Log(SelectedFightSkill);
             if (SelectedFightSkill.GetPattern(out ICellPattern attackPattern))
             { 
                 SelectCellPhase selectCellPhase = new SelectCellPhase(Hero.Coordinates, Grid, attackPattern);
@@ -44,6 +44,7 @@ namespace TPT.Gameplay.FightPhases.AttackPhases.Player
         public void SelectSkill(IFightSkill fightSkill)
         {
             SelectedFightSkill = fightSkill;
+            this.Run();
         }
     }
 }

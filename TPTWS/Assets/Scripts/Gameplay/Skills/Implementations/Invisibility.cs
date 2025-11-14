@@ -7,15 +7,15 @@ using UnityEngine;
 
 namespace TPT.Gameplay.Skills
 {
-    public class ScreamSkill : FightSkill<ScreamSkillData>
+    public class Invisibility : FightSkill<InvisibilityData>
     {
-        public ScreamSkill(ScreamSkillData data) : base(data)
+        public Invisibility(InvisibilityData data) : base(data)
         {
         }
 
         public override Awaitable Perform(IFightHero skillOwner, FightGrid grid, CellCoordinate cellCoordinate)
         {
-            Debug.Log("ScreamSkill performed");
+            Debug.Log("je me met invisible");
             return PhaseManager.CompletedPhase;
         }
 

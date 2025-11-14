@@ -7,22 +7,22 @@ using UnityEngine;
 
 namespace TPT.Gameplay.Skills
 {
-    public class ScreamSkill : FightSkill<ScreamSkillData>
+    public class ShootArrowSkill : FightSkill<ShootArrowSkillData>
     {
-        public ScreamSkill(ScreamSkillData data) : base(data)
+        public ShootArrowSkill(ShootArrowSkillData data) : base(data)
         {
         }
 
         public override Awaitable Perform(IFightHero skillOwner, FightGrid grid, CellCoordinate cellCoordinate)
         {
-            Debug.Log("ScreamSkill performed");
+            Debug.Log("je tire");
             return PhaseManager.CompletedPhase;
         }
 
         public override bool GetPattern(out ICellPattern pattern)
         {
-            pattern = null;
-            return false;
+            pattern = new AttackFloodFillPattern(Data.Range);
+            return true;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace TPT.Gameplay.Skills
                 {
                     if (grid.TryGetMember(x, y, out IGridMember member) && member is IFightHero fightHero)
                     {
+                        Debug.Log("Strike skill performed");
                         if(fightHero.IsPlayerHero != skillOwner.IsPlayerHero)
                             fightHero.AddOrRemoveHealth(Data.Damage * fightHero.CurrentStrength);
                     }
