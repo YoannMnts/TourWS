@@ -18,7 +18,10 @@ namespace Debug
         
         [SerializeField]
         private PlayerHero[] playerHeroes;
-        [SerializeField] private Transform playerTransform;
+        [SerializeField]
+        private GameObject laPorteDeLAGrid;
+        
+        private Transform playerTransform;
 
         public void Interact()
         {
@@ -33,10 +36,10 @@ namespace Debug
 
                 for (int i = 0; i < playerHeroes.Length; i++)
                     list.Add(playerHeroes[i]);
-
+                playerTransform = playerHeroes[0].transform;
                 list.Sort();
                 list.Reverse();
-                FightPhase fightPhase = new FightPhase(list.ToArray(), grid);
+                FightPhase fightPhase = new FightPhase(list.ToArray(), grid, playerTransform, laPorteDeLAGrid);
 
                 fightPhase.Run();
             }

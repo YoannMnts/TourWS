@@ -67,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3992737227165685715, guid: 85ad8a8daeb9de245a4244bc51ceb886, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8817080503141491399}
+    - targetCorrespondingSourceObject: {fileID: 3992737227165685715, guid: 85ad8a8daeb9de245a4244bc51ceb886, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2392311975732922254}
   m_SourcePrefab: {fileID: 100100000, guid: 85ad8a8daeb9de245a4244bc51ceb886, type: 3}
 --- !u!1 &4817053536850278047 stripped
 GameObject:
@@ -90,3 +93,21 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &2392311975732922254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817053536850278047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b465533fd54ec88bba50e5b44921aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Debug.FightLauncher
+  grid: {fileID: 0}
+  playerHeroes:
+  - {fileID: 4539848199128237602, guid: dc607a65007144340886751e14c9d0ba, type: 3}
+  - {fileID: 4539848199128237602, guid: 5980b7f68e3258243af3b26e53a1a441, type: 3}
+  - {fileID: 4539848199128237602, guid: 0109b928c373be045b1aed441519966f, type: 3}
+  laPorteDeLAGrid: {fileID: 0}

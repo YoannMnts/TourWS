@@ -1,4 +1,5 @@
-﻿using TPT.Core.Phases;
+﻿using DG.Tweening;
+using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Grids;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,11 +10,15 @@ namespace TPT.Gameplay.FightPhases
     {
         public readonly FightGrid grid;
         public readonly IFightHero[] heroes;
+        public readonly Transform playerLastPos;
+        public readonly GameObject laPorte;
 
-        public FightPhase(IFightHero[] heroes, FightGrid grid)
+        public FightPhase(IFightHero[] heroes, FightGrid grid, Transform playerLastPos, GameObject laPorte)
         {
             this.heroes = heroes;
             this.grid = grid;
+            this.playerLastPos = playerLastPos;
+            this.laPorte = laPorte;
         }
 
 
@@ -71,7 +76,11 @@ namespace TPT.Gameplay.FightPhases
         Awaitable IPhase.End()
         {
             for (int i = 0; i < heroes.Length; i++)
+            {
+                var pos = heroes[i].IsPlayerHero ? playerLastPos.position : heroes[i].transform.position;
+                heroes[i].transform.DOMove(pos, 1f);
                 grid.RemoveMember(heroes[i]);
+            }
             
             grid.DestroyCells();
             //foreach (IFightHero fightHero in heroes)
