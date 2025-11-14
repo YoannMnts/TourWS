@@ -35,6 +35,7 @@ namespace TPT.Gameplay.Heroes
 
         private void Awake()
         {
+            Debug.Log($"hero {name} is Awake, Skills Count: {HeroData.Skills.Length}");
             MovementSpeed = HeroData.MovementRange;
             Speed = HeroData.Speed;
             for (int i = 0; i < HeroData.Skills.Length; i++)
@@ -43,6 +44,7 @@ namespace TPT.Gameplay.Heroes
                 var skill = SkillManager.CreateSkillFromData(skillData);
                 if (skill != null)
                 {
+                    Debug.Log($"skill qui va s'ajouter : {skill}");
                     skills.Add(skill);
                 }
             }

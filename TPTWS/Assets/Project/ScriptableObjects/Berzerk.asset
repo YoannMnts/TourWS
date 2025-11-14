@@ -20,3 +20,4 @@ MonoBehaviour:
   <Speed>k__BackingField: 2
   <Skills>k__BackingField:
   - {fileID: 11400000, guid: aa2e256ecdfc91949a89b1d9280c0a1a, type: 2}
+  - {fileID: 11400000, guid: 09748705744149548a0cc2195612807e, type: 2}

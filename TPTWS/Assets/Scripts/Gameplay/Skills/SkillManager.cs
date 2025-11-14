@@ -9,6 +9,7 @@ namespace TPT.Gameplay.Skills
         {
             StrikeSkillData strikeSkillData => new StrikeSkill(strikeSkillData),
             HealAllSkillData healAllSkillData => new HealAllSkill(healAllSkillData),
+            ScreamSkillData screamSkillData => new ScreamSkill(screamSkillData),
             _ => null,
         };
     }
