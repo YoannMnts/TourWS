@@ -34,8 +34,11 @@ namespace Debug
                     list.Add(spawnPoints.Enemy);
                 }
 
-                for (int i = 0; i < playerHeroes.Length; i++)
-                    list.Add(playerHeroes[i]);
+                for (int i = 0; i < grid.PlayerHero.Length; i++)
+                {
+                    PlayerSpawnPoint spawnPoints = grid.PlayerHero[i];
+                    list.Add(spawnPoints.PlayerHero);
+                }
                 playerTransform = playerHeroes[0].transform;
                 list.Sort();
                 list.Reverse();
