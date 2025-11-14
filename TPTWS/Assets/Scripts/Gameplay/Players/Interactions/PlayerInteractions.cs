@@ -10,7 +10,7 @@ namespace TPT.Gameplay.Players.Interactions
 
 		public void OnInteractInput(InputAction.CallbackContext context)
 		{
-			if(current != null)
+			if (current != null  && context.performed)
 				current.Interact();
 		}
 
@@ -19,8 +19,6 @@ namespace TPT.Gameplay.Players.Interactions
 			if (other.TryGetComponent(out IInteractable interactable))
 			{
 				Debug.Log(interactable.transform.name, interactable.transform);
-				if(current != null && interactable.Priority < current.Priority)
-					return;
 				
 				Debug.Log("Setting to current");
 				current = interactable;

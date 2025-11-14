@@ -40,8 +40,7 @@ namespace TPT.Gameplay.Level
                                 if (levier.isActive)
                                         active++;
                         }
-        
-                        // 🔹 Baisse du niveau de l’eau selon le nombre de leviers activés
+                        
                         if (waterController != null)
                         {
                                 float normalized = (float)active / leviers.Length;

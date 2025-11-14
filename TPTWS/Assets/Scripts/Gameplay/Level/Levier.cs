@@ -7,7 +7,11 @@ namespace TPT.Gameplay.Level
     {
         public event Action OnLevierChange;
         public bool isActive = false;
-        
+
+        void Start()
+        {
+	        isActive=false;
+        }
         public void Interacting()
         {
                 if (isActive)

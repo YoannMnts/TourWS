@@ -16,11 +16,6 @@ namespace TPT.Gameplay.PNJs
                 public bool fighting = false;
                 private int TextCount = 0;
 
-                [SerializeField] 
-                private int priority = 1;
-        
-                public int Priority => priority;
-
                 private void Start()
                 {
                         playerMovement.enabled = false;
