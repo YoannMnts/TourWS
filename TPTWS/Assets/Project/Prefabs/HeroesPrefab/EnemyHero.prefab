@@ -85,3 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9811da91bc54ffc9f86ae6abd58de52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Heroes.EnemyHero
+  <HeroData>k__BackingField: {fileID: 0}
+  skills: []
+  references:
+    version: 2
+    RefIds: []

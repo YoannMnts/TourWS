@@ -1590,6 +1590,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1159153415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1149216990733490069, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.051836
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.0172968
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716327345765527024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313620772579651024, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
+    - target: {fileID: 4547157902184039779, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
+    - target: {fileID: 6071494578470591393, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
+    - target: {fileID: 6650859056652280840, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e772c5cb5862ff4a9c1de19267bc41c, type: 2}
+    - target: {fileID: 7243902709624041985, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+      propertyPath: m_Name
+      value: FightLevel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2396595471037229970, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
 --- !u!114 &1189844404 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -7856654157167661501, guid: 68635672f80326642bfec860ca7dc27d, type: 3}
@@ -2357,7 +2435,6 @@ MonoBehaviour:
   iconPNJ: {fileID: 1679244926}
   chatBubble: {fileID: 344558835}
   playerMovement: {fileID: 1106017721}
-  fighting: 0
 --- !u!1 &1721174554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,6 +2780,7 @@ GameObject:
   - component: {fileID: 1821520850}
   - component: {fileID: 1821520852}
   - component: {fileID: 1821520854}
+  - component: {fileID: 1821520853}
   m_Layer: 0
   m_Name: PNJ
   m_TagString: Untagged
@@ -2847,6 +2925,24 @@ MonoBehaviour:
   IconR: 1.2
   leftClickIcon: {fileID: 2046003172}
   mainCamera: {fileID: 1047357556}
+--- !u!114 &1821520853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821520845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25011de25cf4a6643a285af325a8a854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.PNJs.InteractEnnemy
+  ChatText: crouaa
+  ChatText2: 'Tu ne pourras pas fuire !! '
+  iconPNJ: {fileID: 1821520852}
+  chatBubble: {fileID: 1899021377}
+  playerMovement: {fileID: 1106017721}
+  combat: 0
 --- !u!114 &1821520854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,16 +2952,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1821520845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1a68e05bfb0de40a064ceede56d608, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b465533fd54ec88bba50e5b44921aa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: TPT.Gameplay::InteractPNJ
-  ChatText: 'Tu ne pourras pas fuire !! '
-  ChatText2: "T'es pr\xEAt \xE0 mourir ?"
-  ChatText3: crouaa
-  iconPNJ: {fileID: 1821520852}
-  chatBubble: {fileID: 1899021377}
-  playerMovement: {fileID: 1106017721}
-  fighting: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Debug.FightLauncher
+  grid: {fileID: 1852269044}
+  playerHeroes: []
+  playerTransform: {fileID: 0}
 --- !u!1 &1828477709
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,6 +3139,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1852269044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8548005598127595302, guid: 704b25fba5b779f4abbbf48ffee41029, type: 3}
+  m_PrefabInstance: {fileID: 1159153415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ea0613bd714460802a7ece25db3616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Grids.FightGrid
 --- !u!1 &1899021375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,6 +3288,7 @@ GameObject:
   - component: {fileID: 2065364710}
   - component: {fileID: 2065364709}
   - component: {fileID: 2065364708}
+  - component: {fileID: 2065364713}
   m_Layer: 0
   m_Name: MurLevier
   m_TagString: Untagged
@@ -3284,6 +3388,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0.186, y: 90, z: 0}
+--- !u!114 &2065364713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065364707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5378c27726c15e048a144d84fdbafa28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.PNJs.IconPNJ
+  IconR: 1
+  leftClickIcon: {fileID: 2046003172}
+  mainCamera: {fileID: 1047357556}
 --- !u!1001 &8867485801339866010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3437,3 +3556,4 @@ SceneRoots:
   - {fileID: 912493298}
   - {fileID: 387674423}
   - {fileID: 1484778620}
+  - {fileID: 1159153415}

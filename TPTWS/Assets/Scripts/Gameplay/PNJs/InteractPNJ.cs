@@ -13,7 +13,7 @@ namespace TPT.Gameplay.PNJs
                 [SerializeField] private IconPNJ iconPNJ;
                 [SerializeField] private ChatBubble chatBubble;
                 [SerializeField] private PlayerMovement playerMovement;
-                public bool fighting = false;
+                
                 private int TextCount = 0;
 
                 private void Start()
@@ -21,7 +21,6 @@ namespace TPT.Gameplay.PNJs
                         playerMovement.enabled = false;
                         iconPNJ.ClearCurrent();
                         chatBubble.Show(ChatText);
-                                
                         TextCount++;
                 }
                 
@@ -33,12 +32,10 @@ namespace TPT.Gameplay.PNJs
                                         playerMovement.enabled = false;
                                         iconPNJ.ClearCurrent();
                                         chatBubble.Show(ChatText);
-                                
                                         TextCount++;
                                         break;
                                 case 1:
                                         Debug.Log("Interact");
-                                        fighting = true;
                                         // Cache l’icône
                                         playerMovement.enabled = false;
                                         iconPNJ.ClearCurrent();
@@ -57,7 +54,6 @@ namespace TPT.Gameplay.PNJs
                                         playerMovement.enabled = true;
                                         iconPNJ.ClearCurrent();
                                         chatBubble.Hide();
-                                
                                         TextCount=0;
                                         break;
                         }
