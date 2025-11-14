@@ -15,17 +15,31 @@ namespace TPT.Gameplay.Skills
 
         public override Awaitable Perform(IFightHero skillOwner, FightGrid grid, CellCoordinate cellCoordinate)
         {
+            if (grid.TryGetMember(cellCoordinate.x, cellCoordinate.y, out IGridMember member) && member is IFightHero fightHero)
+            {
+                Debug.Log("Strike skill performed");
+                Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
+                if(fightHero.IsPlayerHero != skillOwner.IsPlayerHero)
+                    fightHero.AddOrRemoveHealth(-Data.Damage); //* fightHero.CurrentStrength
+                Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
+            }
             for (int x = skillOwner.Coordinates.x; x < cellCoordinate.x; x++)
             {
+                /*
+                Debug.Log("Je suis le X");
                 for (int y = skillOwner.Coordinates.y; y < cellCoordinate.y; y++)
                 {
+                    Debug.Log("Je suis le Y");
                     if (grid.TryGetMember(x, y, out IGridMember member) && member is IFightHero fightHero)
                     {
                         Debug.Log("Strike skill performed");
+                        Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
                         if(fightHero.IsPlayerHero != skillOwner.IsPlayerHero)
                             fightHero.AddOrRemoveHealth(Data.Damage * fightHero.CurrentStrength);
+                        Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
                     }
                 }
+                */
             }
 
             return PhaseManager.CompletedPhase;

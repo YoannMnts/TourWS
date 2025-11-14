@@ -15,7 +15,15 @@ namespace TPT.Gameplay.Skills
 
         public override Awaitable Perform(IFightHero skillOwner, FightGrid grid, CellCoordinate cellCoordinate)
         {
-            Debug.Log("je tire");
+            if (grid.TryGetMember(cellCoordinate.x, cellCoordinate.y, out IGridMember member) && member is IFightHero fightHero)
+            {
+                Debug.Log("Strike skill performed");
+                Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
+                if(fightHero.IsPlayerHero != skillOwner.IsPlayerHero)
+                    fightHero.AddOrRemoveHealth(-Data.Damage); //* fightHero.CurrentStrength
+                Debug.Log($"Hero {fightHero.HeroData.name} health : {fightHero.CurrentHealth}");
+            }
+
             return PhaseManager.CompletedPhase;
         }
 

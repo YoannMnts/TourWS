@@ -1,6 +1,7 @@
 ﻿using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Grids;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TPT.Gameplay.FightPhases
 {
@@ -40,8 +41,12 @@ namespace TPT.Gameplay.FightPhases
             {
                 for (int i = 0; i < heroes.Length; i++)
                 {
-                    if (IsFightFinished())
+                    if (IsFightFinished(out bool isPlayerTeamDead))
+                    {
+                        if (isPlayerTeamDead)
+                            SceneManager.LoadScene(0);
                         return;
+                    }
 
                     IFightHero hero = heroes[i];
                     if (!hero.IsAlive)
@@ -69,11 +74,12 @@ namespace TPT.Gameplay.FightPhases
                 grid.RemoveMember(heroes[i]);
             
             grid.DestroyCells();
-
+            //foreach (IFightHero fightHero in heroes)
+            //    fightHero.MoveTo()
             return PhaseManager.CompletedPhase;
         }
         
-        private bool IsFightFinished()
+        private bool IsFightFinished(out bool isPlayerTeamIsDead)
         {
             bool playerTeamIsDead = true;
             bool enemiesTeamIsDead = true;
@@ -86,7 +92,9 @@ namespace TPT.Gameplay.FightPhases
                     enemiesTeamIsDead = false;
                 
             }
+            isPlayerTeamIsDead = playerTeamIsDead;
             return playerTeamIsDead || enemiesTeamIsDead;
+            
         }
     }
 }

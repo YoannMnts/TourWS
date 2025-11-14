@@ -86,9 +86,6 @@ namespace TPT.Gameplay.Heroes
         
         public void AddOrRemoveHealth(int amount)
         {
-            if (amount <= 0) 
-                return;
-
             CurrentHealth += amount;
             CurrentHealth = Mathf.Max(CurrentHealth, 0);
 
@@ -101,7 +98,7 @@ namespace TPT.Gameplay.Heroes
 
         private void Die()
         {
-            //Faire un tas de trucs
+            Debug.Log($"{HeroData.name} is dead");
         }
     }
 }
