@@ -15,8 +15,8 @@ MonoBehaviour:
   <Name>k__BackingField: Berzerk
   <Description>k__BackingField: 
   <MaxHealth>k__BackingField: 250
-  <Speed>k__BackingField: 2
   <Strength>k__BackingField: 60
+  <MovementRange>k__BackingField: 2
+  <Speed>k__BackingField: 2
   <Skills>k__BackingField:
-  - {fileID: 11400000, guid: 89eac3895434bce439e507769fd78a3b, type: 2}
-  - {fileID: 11400000, guid: fbeaf0951d48d6c448a27913fd95227c, type: 2}
+  - {fileID: 11400000, guid: aa2e256ecdfc91949a89b1d9280c0a1a, type: 2}

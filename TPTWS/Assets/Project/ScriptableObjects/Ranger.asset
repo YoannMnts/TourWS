@@ -15,8 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Ranger
   <Description>k__BackingField: 
   <MaxHealth>k__BackingField: 120
-  <Speed>k__BackingField: 3
   <Strength>k__BackingField: 75
-  <Skills>k__BackingField:
-  - {fileID: 11400000, guid: cb5f23a455c26f745ac585308473522b, type: 2}
-  - {fileID: 11400000, guid: 43fbf933c7d5f824e908f715322e9f20, type: 2}
+  <MovementRange>k__BackingField: 0
+  <Speed>k__BackingField: 3
+  <Skills>k__BackingField: []

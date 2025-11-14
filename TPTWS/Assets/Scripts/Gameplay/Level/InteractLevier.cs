@@ -1,20 +1,22 @@
+using TPT.Gameplay.Player;
 using UnityEngine;
 
 namespace TPT.Gameplay.Level
 {
-        public class InteractLevier : MonoBehaviour
+        public class InteractLevier : MonoBehaviour, IInteractable
         {
-                [SerializeField] private KeyCode interactKey = KeyCode.E;
-                private Levier currentLevier;
-
-                private void Update()
+                [SerializeField]
+                private KeyCode interactKey = KeyCode.E;
+                public int Priority => 3;
+                
+                
+                public void Interact()
                 {
-                        if (currentLevier != null && Input.GetKeyDown(interactKey))
-                        {
-                                currentLevier.Interacting();
-                        }
+                        currentLevier.Interacting();
                 }
 
+                private Levier currentLevier;
+                
                 private void OnTriggerEnter(Collider other)
                 {
                         Levier levier = other.GetComponent<Levier>();
