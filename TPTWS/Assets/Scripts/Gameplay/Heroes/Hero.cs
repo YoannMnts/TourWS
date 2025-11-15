@@ -96,9 +96,6 @@ namespace TPT.Gameplay.Heroes
                 Die(); 
         }
 
-        private void Die()
-        {
-            Debug.Log($"{HeroData.name} is dead");
-        }
+        protected abstract void Die();
     }
 }

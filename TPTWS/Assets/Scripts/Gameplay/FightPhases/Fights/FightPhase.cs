@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.Players;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,13 +13,15 @@ namespace TPT.Gameplay.FightPhases
         public readonly IFightHero[] heroes;
         public readonly Transform playerLastPos;
         public readonly GameObject laPorte;
+        public readonly PlayerMovement playerMovement;
 
-        public FightPhase(IFightHero[] heroes, FightGrid grid, Transform playerLastPos, GameObject laPorte)
+        public FightPhase(IFightHero[] heroes, FightGrid grid, Transform playerLastPos, GameObject laPorte, PlayerMovement playerMovement)
         {
             this.heroes = heroes;
             this.grid = grid;
             this.playerLastPos = playerLastPos;
             this.laPorte = laPorte;
+            this.playerMovement = playerMovement;
         }
 
 
@@ -51,6 +54,8 @@ namespace TPT.Gameplay.FightPhases
                     {
                         if (isPlayerTeamDead)
                             SceneManager.LoadScene(0);
+                        laPorte.SetActive(false);
+                        playerMovement.enabled = true;
                         return;
                     }
 
@@ -78,7 +83,8 @@ namespace TPT.Gameplay.FightPhases
         {
             for (int i = 0; i < heroes.Length; i++)
             {
-                var pos = heroes[i].IsPlayerHero ? playerLastPos.position : heroes[i].transform.position;
+                var isPlayerHero = heroes[i].IsPlayerHero;
+                var pos = isPlayerHero && playerLastPos.position != null ? playerLastPos.position : heroes[i].transform.position;
                 heroes[i].transform.DOMove(pos, 1f);
                 grid.RemoveMember(heroes[i]);
             }

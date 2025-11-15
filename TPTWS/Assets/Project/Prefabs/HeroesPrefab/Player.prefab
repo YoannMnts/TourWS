@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 876949964327793153, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+      propertyPath: <HeroData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e27c3ff07ee30a44a240d8ed8131fb6, type: 2}
     - target: {fileID: 5369457376807503358, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,10 +54,139 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7307672922155418821, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
       propertyPath: m_Name
-      value: PlayerHero
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7307672922155418821, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8857163613479609538}
+    - targetCorrespondingSourceObject: {fileID: 7307672922155418821, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3821668428534566909}
+    - targetCorrespondingSourceObject: {fileID: 7307672922155418821, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2403902848747307450}
   m_SourcePrefab: {fileID: 100100000, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+--- !u!1 &6215349518773285094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7307672922155418821, guid: 21009c11be515b14abbb49c85907cfcc, type: 3}
+  m_PrefabInstance: {fileID: 3687122886661829667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &8857163613479609538
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215349518773285094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &3821668428534566909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215349518773285094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 71ca3b96ec213f74c9e478583a860af5, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bd1f3102-c6d6-4649-a991-179e3c1f54ec
+    m_ActionName: 'Attaque/AttaqueNormal[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a137552d-ee7a-4597-a018-0586ce3bedad
+    m_ActionName: 'Attaque/AttaqueSpecial[/Keyboard/x]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 605f7f03-056d-4ea0-a3ba-9f353d7edfaa
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TPT.Gameplay.Players.Interactions.PlayerInteractions,
+          TPT.Gameplay
+        m_MethodName: OnInteractInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 838825c2-959f-4ba2-80e8-e650972fd616
+    m_ActionName: 'Player/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TPT.Gameplay.UIManager.GamePause, TPT.Gameplay
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6ae3dae3-4592-4495-b593-1b33913c620a
+    m_ActionName: Player/Pause
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &2403902848747307450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215349518773285094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56851eef1d9203f45a11d3d09476936a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TPT.Gameplay::TPT.Gameplay.Player.PlayerMovement
+  speed: 3.5
+  rotationSpeed: 5
+  gravity: -10

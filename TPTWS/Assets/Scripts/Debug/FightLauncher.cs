@@ -7,6 +7,8 @@ using TPT.Gameplay.Players;
 using TPT.Gameplay.Players.Interactions;
 using TPT.Gameplay.PNJs;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.Pool;
 
 namespace Debug
@@ -20,7 +22,7 @@ namespace Debug
         private PlayerHero[] playerHeroes;
         [SerializeField]
         private GameObject laPorteDeLAGrid;
-        
+        [SerializeField] private PlayerMovement playerMovement;
         private Transform playerTransform;
 
         public void Interact()
@@ -42,8 +44,8 @@ namespace Debug
                 playerTransform = playerHeroes[0].transform;
                 list.Sort();
                 list.Reverse();
-                FightPhase fightPhase = new FightPhase(list.ToArray(), grid, playerTransform, laPorteDeLAGrid);
-
+                FightPhase fightPhase = new FightPhase(list.ToArray(), grid, playerTransform, laPorteDeLAGrid, playerMovement);
+                playerMovement.enabled = false;
                 fightPhase.Run();
             }
         }
