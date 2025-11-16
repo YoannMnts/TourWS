@@ -15,13 +15,13 @@ namespace TPT.Gameplay.Level
             offset = transform.position - player.position;
         }
 
-        void LateUpdate()
+        void FixedUpdate()
         {
             // Nouvelle position souhaitée (seulement en translant la caméra sans changer la rotation)
             Vector3 targetPosition = player.position + offset;
 
             // Déplacement doux de la caméra vers le joueur
-            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
         }
     }
 }
