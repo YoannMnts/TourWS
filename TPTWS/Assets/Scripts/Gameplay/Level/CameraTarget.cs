@@ -19,6 +19,7 @@ namespace TPT.Gameplay.Level
         {
             // Nouvelle position souhaitée (seulement en translant la caméra sans changer la rotation)
             Vector3 targetPosition = player.position + offset;
+            
 
             // Déplacement doux de la caméra vers le joueur
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);

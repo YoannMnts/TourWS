@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 
 namespace Debug
 {
@@ -22,11 +23,17 @@ namespace Debug
         private PlayerHero[] playerHeroes;
         [SerializeField]
         private GameObject laPorteDeLAGrid;
-        [SerializeField] private PlayerMovement playerMovement;
-        private Transform playerTransform;
+        [SerializeField] 
+        private PlayerMovement playerMovement;
+        [SerializeField]
+        private NavMeshAgent[] heroFollowScript;
 
         public void Interact()
         {
+            foreach (var followCharacter in heroFollowScript)
+            {
+                followCharacter.enabled = false;
+            }
             //PlayerSaveSystem.SavePlayerPosition(playerTransform);
             using (ListPool<IFightHero>.Get(out var list))
             {
@@ -41,10 +48,9 @@ namespace Debug
                     PlayerSpawnPoint spawnPoints = grid.PlayerHero[i];
                     list.Add(spawnPoints.PlayerHero);
                 }
-                playerTransform = playerHeroes[0].transform;
                 list.Sort();
                 list.Reverse();
-                FightPhase fightPhase = new FightPhase(list.ToArray(), grid, playerTransform, laPorteDeLAGrid, playerMovement);
+                FightPhase fightPhase = new FightPhase(list.ToArray(), grid, laPorteDeLAGrid, playerMovement);
                 playerMovement.enabled = false;
                 fightPhase.Run();
             }
