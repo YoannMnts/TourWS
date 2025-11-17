@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using TPT.Gameplay.FightPhases.Grids.SpawnPoint;
 using UnityEditor;
 using UnityEngine;
@@ -41,6 +42,7 @@ namespace TPT.Gameplay.FightPhases.Grids
 
         private void Awake()
         {
+            DOTween.SetTweensCapacity(500, 105);
             Members = new ();
             //Degeu mais tant pis
             if(manager == null)
@@ -234,6 +236,7 @@ namespace TPT.Gameplay.FightPhases.Grids
         
         public FightCell GetCellSpawn(IFightHero fightHero)
         {
+            Debug.Log(fightHero);
             for (int i = 0; i < Enemies.Length; i++)
             {
                 if ((IFightHero)Enemies[i].Enemy == fightHero)

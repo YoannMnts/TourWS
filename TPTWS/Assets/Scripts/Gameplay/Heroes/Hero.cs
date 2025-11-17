@@ -62,8 +62,8 @@ namespace TPT.Gameplay.Heroes
             Debug.Log($"Ending turn for {name}", gameObject);
             await Awaitable.WaitForSecondsAsync(.2f);
         }
-
         public FightGrid Grid { get; set; }
+
         public async Awaitable MoveTo(CellCoordinate targetCoordinates)
         {
             if (Coordinates.Equals(targetCoordinates))
@@ -86,9 +86,6 @@ namespace TPT.Gameplay.Heroes
         
         public void AddOrRemoveHealth(int amount)
         {
-            if (amount <= 0) 
-                return;
-
             CurrentHealth += amount;
             CurrentHealth = Mathf.Max(CurrentHealth, 0);
 
@@ -99,9 +96,6 @@ namespace TPT.Gameplay.Heroes
                 Die(); 
         }
 
-        private void Die()
-        {
-            //Faire un tas de trucs
-        }
+        protected abstract void Die();
     }
 }

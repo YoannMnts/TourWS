@@ -1,6 +1,9 @@
-﻿using TPT.Core.Phases;
+﻿using DG.Tweening;
+using TPT.Core.Phases;
 using TPT.Gameplay.FightPhases.Grids;
+using TPT.Gameplay.Players;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TPT.Gameplay.FightPhases
 {
@@ -8,23 +11,28 @@ namespace TPT.Gameplay.FightPhases
     {
         public readonly FightGrid grid;
         public readonly IFightHero[] heroes;
+        public readonly GameObject laPorte;
+        public readonly PlayerMovement playerMovement;
 
-        public FightPhase(IFightHero[] heroes, FightGrid grid)
+        public FightPhase(IFightHero[] heroes, FightGrid grid, GameObject laPorte, PlayerMovement playerMovement)
         {
             this.heroes = heroes;
             this.grid = grid;
+            this.laPorte = laPorte;
+            this.playerMovement = playerMovement;
         }
 
 
 
         async Awaitable IPhase.Begin()
         {
+            
             grid.GenerateCells();
             for (int i = 0; i < heroes.Length; i++)
             {
+                Debug.Log($"c'est la grid : {grid}");
                 FightCell cell = grid.GetCellSpawn(heroes[i]);
                 IFightHero fightHero = heroes[i];
-                
                 await fightHero.MoveTo(cell.Coordinates);
                 
                 await grid.AddMember(fightHero);
@@ -40,8 +48,14 @@ namespace TPT.Gameplay.FightPhases
             {
                 for (int i = 0; i < heroes.Length; i++)
                 {
-                    if (IsFightFinished())
+                    if (IsFightFinished(out bool isPlayerTeamDead))
+                    {
+                        if (isPlayerTeamDead)
+                            SceneManager.LoadScene(0);
+                        laPorte.SetActive(false);
+                        playerMovement.enabled = true;
                         return;
+                    }
 
                     IFightHero hero = heroes[i];
                     if (!hero.IsAlive)
@@ -66,14 +80,15 @@ namespace TPT.Gameplay.FightPhases
         Awaitable IPhase.End()
         {
             for (int i = 0; i < heroes.Length; i++)
+            {
                 grid.RemoveMember(heroes[i]);
+            }
             
             grid.DestroyCells();
-
             return PhaseManager.CompletedPhase;
         }
         
-        private bool IsFightFinished()
+        private bool IsFightFinished(out bool isPlayerTeamIsDead)
         {
             bool playerTeamIsDead = true;
             bool enemiesTeamIsDead = true;
@@ -86,7 +101,9 @@ namespace TPT.Gameplay.FightPhases
                     enemiesTeamIsDead = false;
                 
             }
+            isPlayerTeamIsDead = playerTeamIsDead;
             return playerTeamIsDead || enemiesTeamIsDead;
+            
         }
     }
 }

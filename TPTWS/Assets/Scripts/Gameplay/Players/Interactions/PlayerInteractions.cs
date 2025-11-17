@@ -22,7 +22,7 @@ namespace TPT.Gameplay.Players.Interactions
 			{
 				Debug.Log(interactable.transform.name, interactable.transform);
 				
-				Debug.Log("Setting to current");
+				Debug.Log($"Setting to {interactable}");
 				current = interactable;
 				IconPNJ.Instance.SetCurrent(current);
 			}

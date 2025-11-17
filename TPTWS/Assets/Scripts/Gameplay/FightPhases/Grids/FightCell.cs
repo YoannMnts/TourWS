@@ -61,6 +61,7 @@ namespace TPT.Gameplay.FightPhases.Grids
 
             currentSelectPhase = phase;
             meshRenderer.material.DOKill();
+            
             if (phase.Cells.Contains(Coordinates))
                 meshRenderer.material.DOColor(validCellColor, .3f);
             else
@@ -83,7 +84,7 @@ namespace TPT.Gameplay.FightPhases.Grids
                 return;
             
             transform.DOKill();
-            transform.DOScale(Vector3.one * 1.2f, .3f).SetEase(Ease.OutExpo);
+            transform.DOScale(Vector3.one, .3f).SetEase(Ease.OutExpo);
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
@@ -92,7 +93,7 @@ namespace TPT.Gameplay.FightPhases.Grids
                 return;
             
             transform.DOKill();
-            transform.DOScale(Vector3.one, .3f).SetEase(Ease.OutExpo);
+            transform.DOScale(Vector3.one * .8f, .3f).SetEase(Ease.OutExpo);
         }
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
@@ -101,7 +102,7 @@ namespace TPT.Gameplay.FightPhases.Grids
             {
                 currentSelectPhase.SelectCell(Coordinates);
                 transform.DOKill();
-                transform.DOPunchScale(Vector3.one * 1.2f, .3f);
+                transform.DOPunchScale(Vector3.one * 0.8f, .3f);
             }
         }
     }
